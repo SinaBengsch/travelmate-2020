@@ -58,4 +58,4 @@ activity2 = Activity.create!(
   )
 
 puts 'Activities created'
-puts "You now have #{User.count} users and #{Activity.count} bikes."
+puts "You now have #{User.count} users and #{Activity.count} activities."
