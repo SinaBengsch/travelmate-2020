@@ -1,1 +1,36 @@
 // Specific CSS for your home-page
+.banner {
+  height: 440px;
+  background-size: cover;
+  background-position: center;
+}
+
+.banner-text {
+  padding-top: 50px;
+  margin-left: 50px;
+}
+
+.banner h2 {
+  font-weight: light;
+  margin: 0;
+}
+
+.banner h1 {
+  font-size: 60px;
+}
+
+.text-right {
+  text-align: right;
+  margin-top: 120px;
+  margin-right: 180px;
+}
+
+.text-right h2 {
+  color: white;
+  font-weight: bold;
+}
+
+.suggestion {
+  margin-left: 40px;
+  margin-top: 140px;
+}
