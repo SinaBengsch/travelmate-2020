@@ -1,0 +1,22 @@
+.search-btn {
+background: linear-gradient(45deg, #85eefc, #42b0bf);
+padding: 15px 30px;
+color: white;
+font-weight: bold;
+border-top-right-radius: 20px;
+border-top-left-radius: 8px;
+border-bottom-left-radius: 20px;
+border-bottom-right-radius: 8px;
+box-shadow: 3px -5px 8px;
+
+}
+
+.search-btn:hover {
+  color: #e2e0e0;
+  text-decoration: none;
+  background: linear-gradient(45deg, #42b0bf, #85eefc);
+  box-shadow: -2px 5px 8px;
+  padding: 15.5px 31px 15px 30px;
+  border: 1px solid #dc4b31;
+  transition: border 0.3s ease;
+}
