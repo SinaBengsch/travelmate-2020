@@ -5,3 +5,57 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Activity.destroy_all # if Rails.env.development?
+User.destroy_all # if Rails.env.development?
+puts 'Delete data from database...'
+user1 = User.create!(
+  email: "benny@email.com",
+  password: "secret",
+  username: "Benny",
+  first_name: "Ben",
+  last_name: "Schmidt",
+  language: "German",
+  description: "I am a computer geek who loves spending all his free time out in the nature. Surfing, Hiking, Running...You name it and I am in."
+)
+
+user2 = User.create(
+  email: "dan@email.com",
+  password: "secret",
+  username: "Dan",
+  first_name: "Daniel",
+  last_name: "Craemer",
+  language: "English",
+  description: "I love to discover places all over the world and meet cool people to share those special moments."
+)
+
+user3 = User.create(
+  email: "rachelb@email.com",
+  password: "secret",
+  username: "rachelb",
+  first_name: "Rachel",
+  last_name: "Brown",
+  language: "English",
+  description: "My passion is to take photos while travelling. My favourite city is Paris. I've been there literally 100 times already."
+)
+
+activity1 = Activity.create!(
+  name: "Surfing in Hawaii",
+  description: "Let's go surfing together in one of the locals favourite surf spots Laniakea Beach. If we are lucky we will see some turtles as well!!",
+  address: "Hawaii",
+  start_date: "08-08-2020",
+  end_date: "16-08-2020",
+  user: user1
+  )
+
+activity2 = Activity.create!(
+  name: "Eiffel Tower in Paris",
+  description: "We can check out the Eiffel Tower and climb the million stairs together.",
+  address: "Paris",
+  start_date: "01-10-2020",
+  end_date: "01-10-2020",
+  user: user3
+  )
+
+puts 'Activities created'
+puts "You now have #{User.count} users and #{Activity.count} bikes."
