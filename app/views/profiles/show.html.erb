@@ -1,24 +1,31 @@
 <div class="container">
-  <h2><i class="fa fa-user-circle"></i> <%= @profile.username %></h2>
+  <div class="row justify-content-center">
+    <div class="col-9">
+      <h2><i class="fa fa-user-circle"></i> <%= current_user.username %></h2>
 
-  <div class="description">
-    <%= link_to '#' do %>
-    <i class="fas fa-pencil-alt"></i> edit
-    <% end %>
-    <h6>Language: <%= @profile.language %></h4>
-    <p> <%= @profile.description %></p>
-  </div>
+      <div class="description">
+        <%= link_to edit_user_registration_path do %>
+        <div class="other-btn"><i class="fas fa-pencil-alt"></i> edit</div>
+        <% end %>
+        <h6>Language: <%= current_user.language %></h4>
+        <p> <%= current_user.description %></p>
+      </div>
 
-  <div>
-    <%= link_to activities_path do %>
-    <i class="fa fa-arrow-left"></i> activities
-    <% end %>
-    <%= link_to '#' do %>
-    <i class="far fa-comment-dots"></i> contact
-    <% end %>
-  </div>
+    <hr>
+      <div>
+        <%= link_to activities_path do %>
+        <div class="other-btn"><i class="fa fa-arrow-left"></i> activities</div>
+        <% end %>
 
-  <div>
-    <h4><%= @profile.username %>'s activities:</h4>
+        <%= link_to '#' do %>
+        <div class="other-btn"><i class="far fa-comment-dots"></i> contact</div>
+        <% end %>
+      </div>
+
+    <br>
+      <div>
+        <h4><%= current_user.username %>'s activities:</h4>
+      </div>
+    </div>
   </div>
 </div>
