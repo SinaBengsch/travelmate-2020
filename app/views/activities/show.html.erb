@@ -1,15 +1,17 @@
-<div class=“container”>
-  <div class=“box”>
-    <div class=“cards-showpage”>
-      <div class=“card-activity-showpage”>
-        <div class=“card-activity-infos-showpage” >
+<div class="container">
+  <div class="box">
+    <div class="cards-showpage">
+      <div class="card-activity-showpage">
+        <div class="card-activity-infos-showpage" >
           <div >
-            <h2 id=“name-showpage”><td> <%= link_to @activity.name, @activity %></td></h2>
-            <td><p class=“left-even” id=“address-showpage”><%= @activity.address %></p><h2 class=“card-activity-timing”><%= @activity.start_date %> until <%= @activity.end_date %></h2></td>
-            <p class=“left-even”><p><strong>About:</strong> <%= @activity.description %></p></p>
+            <h2 id="name-showpage"><td> <%= link_to @activity.name, @activity %></td></h2>
+            <td><p class="left-even" id="address-showpage"><%= @activity.address %></p><h2 class="card-activity-timing"><%= @activity.start_date %> until <%= @activity.end_date %></h2></td>
+            <p class="left-even"><p><strong>About:</strong> <%= @activity.description %></p></p>
           </div>
           <!-- <img src=# class=“card-activity-user avatar-bordered” /> -->
         </div>
       </div>
     </div>
   </div>
+</div>
+
