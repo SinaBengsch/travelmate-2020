@@ -4,12 +4,35 @@
       <h2>Welcome to</h2>
       <h1>travel<strong>m8</strong></h1>
     </div>
-    <div class="text-right">
-      <h2>Find your travel mate</h2>
-    </div>
+<div class="text-right">
+  <div id="text-margin-right">
+  <h2>Find your travel mate</h2>
+  </div>
+    <div class="container-search">
+      <%= form_tag activities_path, method: :get do %>
+      <div class="homepage-search">
+        <div class='inline2' id="address-input">
+          <%= text_field_tag :query,
+          params[:query],
+          class: "form-control address-input",
+            placeholder: "Location"
+            %>
+          </div>
+          <div class='inline'>
+            <%= submit_tag "Search", class: "btn btn-danger" %>
+          </div>
+        <% end %>
+        </div>
+      </div>
+          <!-- <form action="">
+            <input type="search" id="address-input" placeholder="Where are we going?" />
+            <input type="submit">
+          </form> -->
+        </div>
+
+
     <div class="suggestion">
       <h2><strong>Suggestions for you:</strong></h2>
     </div>
   </div>
 </div>
-
