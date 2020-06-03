@@ -31,6 +31,32 @@ position: relative;
     margin-bottom: 220px;
     margin-right: 40px;
   }
+
+.modal-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  pointer-events: auto;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 2px;
+  outline: 0;
+  border-radius: 20px 70px;
+  height: 400px;
+  }
+
+.modal-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 3rem 2rem;
+    border-bottom: 1px solid #dee2e6;
+    border-top-left-radius: 1px;
+    border-top-right-radius: 1px;
+}
+
 // background: #FFFFFF;
 // mix-blend-mode: normal;
 // border: 3px solid #71DCEB;
