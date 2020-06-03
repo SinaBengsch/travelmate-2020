@@ -7,5 +7,5 @@ Rails.application.routes.draw do
   get 'dashboard', to: 'pages#dashboard', as: :dashboard
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :activities, only: [:index, :show, :new, :create]
-  resources :users, only: [:show, :edit, :update, :destroy]
+  resources :profiles, only: [:show, :edit, :update, :destroy]
 end
