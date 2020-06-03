@@ -1,0 +1,24 @@
+<div class="container">
+  <h2><i class="fa fa-user-circle"></i> <%= @profile.username %></h2>
+
+  <div class="description">
+    <%= link_to '#' do %>
+    <i class="fas fa-pencil-alt"></i> edit
+    <% end %>
+    <h6>Language: <%= @profile.language %></h4>
+    <p> <%= @profile.description %></p>
+  </div>
+
+  <div>
+    <%= link_to activities_path do %>
+    <i class="fa fa-arrow-left"></i> activities
+    <% end %>
+    <%= link_to '#' do %>
+    <i class="far fa-comment-dots"></i> contact
+    <% end %>
+  </div>
+
+  <div>
+    <h4><%= @profile.username %>'s activities:</h4>
+  </div>
+</div>
