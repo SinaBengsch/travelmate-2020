@@ -1,78 +1,79 @@
-<div class="container">
-  <h2>Activities</h2>
-</div>
-
-<!-- <div class="container-search">
-  <%#= form_tag activities_path, method: :get do %>
-  <div class='inline'>
-    <%#= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-      placeholder: "Location"
-      %>
-    </div>
-    <div class='inline'>
-      <%#= submit_tag "Search", class: "btn btn-primary" %>
-    </div>
-    <%# end %>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1526309206584-51dc789367bd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80);">
+  <div class="container">
+    <h1>BALI</h1>
   </div>
 
-  <div class="container-search">
-    <%#= form_tag activities_path, method: :get do %>
-    <div class='inline'>
-      <%#= text_field_tag :start_date,
-      params[:start_date],
-      class: "form-control",
-        placeholder: "Start Date"
-        %>
+<br>
+
+  <div class="flex-container d-flex">
+
+    <div class="container">
+      <%= form_tag activities_path, method: :get do %>
+      <div class="search-form-control form-group">
+        <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+          placeholder: "Location"
+          %>
+        </button>
       </div>
-      <div class='inline'>
-        <%#= submit_tag "Search", class: "btn btn-primary" %>
-      </div>
-      <%# end %>
+      <% end %>
     </div>
 
+    <div class="container">
+      <%= form_tag activities_path, method: :get do %>
+      <div class="search-form-control form-group">
+        <%= text_field_tag :start_date,
+        params[:start_date],
+        class: "form-control",
+          placeholder: "Start Date"
+          %>
+        </button>
+      </div>
+      <% end %>
+    </div>
 
-    <div class="container-search">
-      <%#= form_tag activities_path, method: :get do %>
-      <div class='inline'>
-        <%#= text_field_tag :end_date,
+    <div class="container">
+      <%= form_tag activities_path, method: :get do %>
+      <div class="search-form-control form-group">
+        <%= text_field_tag :end_date,
         params[:end_date],
         class: "form-control",
           placeholder: "End Date"
           %>
-        </div>
-        <div class='inline'>
-          <%#= submit_tag "Search", class: "btn btn-primary" %>
-        </div>
-        <%# end %>
+        </button>
       </div>
+      <% end %>
+    </div>
 
-      <div class="container-search">
-        <%#= form_tag activities_path, method: :get do %>
-        <div class='inline'>
-          <%#= text_field_tag :name,
-          params[:name],
-          class: "form-control",
-            placeholder: "Category"
-            %>
-          </div>
-          <div class='inline'>
-            <%#= submit_tag "Search", class: "btn btn-primary" %>
-          </div>
-          <%# end %>
+    <div class="container">
+      <%= form_tag activities_path, method: :get do %>
+      <div class="search-form-control form-group">
+        <%= text_field_tag :name,
+        params[:name],
+        class: "form-control",
+          placeholder: "Category"
+          %>
+        </button>
+      </div>
+      <% end %>
+    </div>
+  </div>
+
+<br>
+
+  <div class="container flex-container d-flex mt-5 mb-5">
+    <% @activities.each do |activity| %>
+    <div class="container card-trip">
+      <img src="#" />
+      <div class="card-trip-infos">
+        <div>
+          <h2 class="card-activity-name"><td> <%= link_to activity.name, activity %></td></h2>
+          <p class="left-even"><td><%= activity.address %></td></p>
         </div>
-
-
-        <div class="cards">
-          <%# @activities.each do |activity| %>
-          <div class="card-activity">
-            <div class="card-activity-infos" >
-              <div >
-                <h2 class="card-activity-name"><td> <%#= link_to activity.name, activity %></td></h2>
-                <p class="left-even"><td><%#= activity.address %></td></p>
-              </div>
-          </div>
+        <h2 class="card-activity-timing"><%= activity.start_date %> until <%= activity.end_date %>
+          <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
         </div>
-        <%# end %>
-      </div> -->
+      </div>
+      <% end %>
+
