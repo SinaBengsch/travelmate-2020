@@ -70,12 +70,13 @@
         <div>
           <!-- Button trigger modal -->
           <div class="button-margin">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal_<%= activity.id %>">
              Detail
             </button>
           </div>
           <!-- Modal -->
-          <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal fade" id="modal_<%= activity.id %>" tabindex="-1" role="dialog" aria-labelledby="modal_<%= activity.id %>" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
               <div class="modal-content">
 
@@ -93,7 +94,7 @@
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Send a message</button>
+                  <button type="button" class="btn btn-primary">Profile</button>
                 </div>
               </div>
             </div>
