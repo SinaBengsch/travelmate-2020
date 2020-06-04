@@ -1,5 +1,5 @@
 // Specific CSS for your home-page
-.banner {
+.banner-home {
   height: 440px;
   background-size: cover;
   background-position: center;
@@ -10,12 +10,12 @@
   margin-left: 50px;
 }
 
-.banner h2 {
+.banner-home h2 {
   font-weight: light;
   margin: 0;
 }
 
-.banner h1 {
+.banner-home h1 {
   font-size: 60px;
 }
 
@@ -32,7 +32,7 @@
 
 .suggestion {
   margin-left: 40px;
-  margin-top: 140px;
+  margin-top: 10px;
 }
 
 .homepage-search {
