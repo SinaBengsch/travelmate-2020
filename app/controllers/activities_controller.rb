@@ -1,16 +1,19 @@
 class ActivitiesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   def index
-    if params[:query].present?
-      @activities = Activity.where("address ILIKE ?", "%#{params[:query]}%")
-    elsif params[:start_date].present? && params[:query].present?
-      @activities = Activity.where("start_date >= ?", params[:start_date], "address ILIKE ?", "%#{params[:query]}%")
-    elsif params[:end_date].present? && params[:query].present?
-      @activities = Activity.where("end_date <= ?", params[:end_date], "address ILIKE ?", "%#{params[:query]}%")
-    elsif params[:name].present? && params[:query].present?
-      @activities = Activity.where(name: params[:name]).where("address ILIKE ?", "%#{params[:query]}%")
-    else
-      @activities = Activity.all
+    @activities = Activity.all
+    if params[:search].present?
+      if params[:search][:location].present?
+        @activities = @activities.where("address ILIKE ?", "%#{params[:search][:location]}%")
+      end
+
+      if params[:search][:start_date].present?
+        @activities = @activities.where("start_date >= ?", params[:search][:start_date])
+      end
+
+      if params[:search][:end_date].present?
+        @activities = @activities.where("end_date <= ?", params[:search][:end_date])
+      end
     end
   end
 
@@ -35,6 +38,6 @@ class ActivitiesController < ApplicationController
   private
 
   def activities_params
-    params.require(:activity).permit(:name, :description, :address, :start_date, :end_date)
+    params.require(:activity).permit(:name, :description, :address, :start_date, :end_date, :photo)
   end
 end

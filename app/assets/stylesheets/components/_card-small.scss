@@ -1,0 +1,22 @@
+.card-activity {
+  width: 320px;
+  height: 220px;
+  margin-bottom: 80px;
+  border: 1px solid black;
+  border-bottom-left-radius: 60px;
+  border-top-right-radius: 60px;
+  border-top-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.card-bottom {
+  display: flex;
+  justify-content: space-around;
+}
+
+.image {
+  height: 170px;
+  background-size: cover;
+  border-top-right-radius: 60px;
+  border-top-left-radius: 15px;
+}

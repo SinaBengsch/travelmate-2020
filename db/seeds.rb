@@ -1,3 +1,8 @@
+require "open-uri"
+
+# file = URI.open('https://res.cloudinary.com/detomqnqx/image/upload/v1591267370/travel_2_gaoll5.jpg')
+# file2 = URI.open('https://res.cloudinary.com/detomqnqx/image/upload/v1591267369/travel_1_bvemcd.jpg')
+# activity.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 
@@ -76,6 +81,7 @@ user7demo = User.create(
   language: "German",
   description: "Love traveling."
 )
+
 # setting up cloudinary pictures
 
 # file1 = URI.open('')
@@ -90,8 +96,10 @@ user7demo = User.create(
 # file10 = URI.open('')
 # file11 = URI.open('')
 
-# All activities
+file = URI.open('https://res.cloudinary.com/detomqnqx/image/upload/v1591267370/travel_2_gaoll5.jpg')
+file2 = URI.open('https://res.cloudinary.com/detomqnqx/image/upload/v1591267369/travel_1_bvemcd.jpg')
 
+# All activities
 activity1 = Activity.create!(
   name: "Surfing in Hawaii",
   description: "Let's go surfing at one of the locals favourite surfing spots Laniakea Beach. If we are lucky we will see some turtles as well!!",
@@ -101,6 +109,10 @@ activity1 = Activity.create!(
   user: user1
   )
 # activity1.photo.attach(io: file1, filename: 'photo')
+# activity1.photo.attach(io: file, filename: 'hawaii.jpg', content_type: 'image/jpg')
+
+activity1.photo.attach(io: file, filename: 'travel_1.jpg', content_type: 'image/jpg')
+# activity.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
 
 activity2 = Activity.create(
   name: "Visit Diamond Head",
@@ -111,6 +123,9 @@ activity2 = Activity.create(
   user: user1
   )
 # activity2.photo.attach(io: file2, filename: 'photo')
+# activity2.photo.attach(io: file2, filename: 'paris.jpg', content_type: 'image/jpg')
+
+activity2.photo.attach(io: file2, filename: 'travel_2.jpg', content_type: 'image/jpg')
 
 activity3 = Activity.create(
   name: "Visit Pearl Harbor",

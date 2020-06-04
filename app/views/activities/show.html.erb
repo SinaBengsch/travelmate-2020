@@ -6,6 +6,11 @@
         <div class="card-activity-infos-showpage" >
 
           <div >
+            <% if @activity.photo.attached? %>
+              <%= cl_image_tag @activity.photo.key, height: 30, width: 40, crop: :fill %>
+            <% else %>
+              <%= image_tag 'travel_1.jpg', class: 'activity-image' %>
+            <% end %>
             <h2 id="name-showpage"><td> <%= link_to @activity.name, @activity %></td></h2>
             <td><p class="left-even" id="address-showpage"><%= @activity.address %></p><h2 class="card-activity-timing"><%= @activity.start_date %> until <%= @activity.end_date %></h2></td>
             <p class="left-even"><p><strong>About:</strong> <%= @activity.description %></p></p>
