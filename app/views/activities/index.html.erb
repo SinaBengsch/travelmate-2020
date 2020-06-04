@@ -68,11 +68,37 @@
       <img src="#" />
       <div class="card-trip-infos">
         <div>
+          <!-- Button trigger modal -->
           <div class="button-margin">
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
              Detail
             </button>
           </div>
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+
+                <div class="modal-header">
+                  <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-activity-user avatar-bordered" />
+                  <h5 class="modal-title" id="exampleModalLongTitle"><%= activity.name %></h5>
+
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <td><p class="left-even" id="address-showpage"><%= activity.address %></p><h2 class="card-activity-timing"><%= activity.start_date %> until <%= activity.end_date %></h2></td>
+                  <p class="left-even"><p><strong>About:</strong> <%= activity.description %></p></p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Send a message</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <h2 class="card-activity-name"><td> <%= link_to activity.name, activity %></td></h2>
           <p class="left-even"><td><%= activity.address %></td></p>
         </div>
@@ -82,29 +108,9 @@
       </div>
       <% end %>
 
-<!-- Button trigger modal -->
 
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle"><%= @activity %></h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <td><p class="left-even" id="address-showpage">2</p><h2 class="card-activity-timing">3</h2></td>
-        <p class="left-even"><p><strong>About:</strong> 4</p></p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Send a message</button>
-      </div>
-    </div>
-  </div>
-</div>
+
+
 
 
