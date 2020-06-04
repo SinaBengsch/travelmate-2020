@@ -1,71 +1,68 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1526309206584-51dc789367bd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80);">
   <div class="container">
-    <h1>BALI</h1>
+    <h1><%= params[:query] %></h1>
+    <br>
   </div>
+  <div class="flex-container d-flex">
+    <div class="container search-form-control form-group">
+      <%= simple_form_for :search, url: activities_path, method: :get do |f| %>
+      <%= f.input :location, class: "form-control", placeholder: "Location" %>
+    </div>
+    <div class="container search-form-control form-group">
+      <%= f.input :start_date, placeholder: "Start Date" %>
+    </div>
+    <div class="container search-form-control form-group">
+      <%= f.input :end_date, placeholder: "End Date" %>
+      <%= f.submit %>
+      <% end %>
+    </div>
+  </div>
+
+</div>
 
 <br>
 
-  <div class="flex-container d-flex">
+<div class="container flex-container d-flex mt-5 mb-5">
+  <% @activities.each do |activity| %>
+  <div class="container card-trip">
+    <img src="#" />
+    <div class="card-trip-infos">
+      <div>
+        <!-- Button trigger modal -->
+        <div class="button-margin">
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+           Detail
+         </button>
+       </div>
+       <!-- Modal -->
+       <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
 
-    <div class="container">
-      <%= form_tag activities_path, method: :get do %>
-      <div class="search-form-control form-group">
-        <%= text_field_tag :query,
-        params[:query],
-        class: "form-control",
-          placeholder: "Location"
-          %>
-        </button>
-      </div>
-      <% end %>
-    </div>
+            <div class="modal-header">
+              <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-activity-user avatar-bordered" />
+              <h5 class="modal-title" id="exampleModalLongTitle"><%= activity.name %></h5>
 
-    <div class="container">
-      <%= form_tag activities_path, method: :get do %>
-      <div class="search-form-control form-group">
-        <%= text_field_tag :start_date,
-        params[:start_date],
-        class: "form-control",
-          placeholder: "Start Date"
-          %>
-        </button>
-      </div>
-      <% end %>
-    </div>
-
-    <div class="container">
-      <%= form_tag activities_path, method: :get do %>
-      <div class="search-form-control form-group">
-        <%= text_field_tag :end_date,
-        params[:end_date],
-        class: "form-control",
-          placeholder: "End Date"
-          %>
-        </button>
-      </div>
-      <% end %>
-    </div>
-
-    <div class="container">
-      <%= form_tag activities_path, method: :get do %>
-      <div class="search-form-control form-group">
-        <%= text_field_tag :name,
-        params[:name],
-        class: "form-control",
-          placeholder: "Category"
-          %>
-        </button>
-      </div>
-      <% end %>
-    </div>
-  </div>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <td><p class="left-even" id="address-showpage"><%= activity.address %></p><h2 class="card-activity-timing"><%= activity.start_date %> until <%= activity.end_date %></h2></td>
+              <p class="left-even"><p><strong>About:</strong> <%= activity.description %></p></p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Send a message</button>
 <br>
 
   <div class="container flex-container d-flex mt-5 mb-5">
     <% @activities.each do |activity| %>
+
     <div class="container card-trip">
       <% if activity.photo.attached? %>
         <%= cl_image_tag activity.photo.key, height: 300, width: 400, crop: :fill %>
+
       <% else %>
         <%= image_tag 'travel_1.jpg', class: 'activity-image' %>
       <% end %>
@@ -102,15 +99,17 @@
               </div>
             </div>
           </div>
-
-          <h2 class="card-activity-name"><td> <%= link_to activity.name, activity %></td></h2>
-          <p class="left-even"><td><%= activity.address %></td></p>
-        </div>
-        <h2 class="card-activity-timing"><%= activity.start_date %> until <%= activity.end_date %>
-          <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
         </div>
       </div>
-      <% end %>
+
+      <h2 class="card-activity-name"><td> <%= link_to activity.name, activity %></td></h2>
+      <p class="left-even"><td><%= activity.address %></td></p>
+    </div>
+    <h2 class="card-activity-timing"><%= activity.start_date %> until <%= activity.end_date %>
+      <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+    </div>
+  </div>
+  <% end %>
 
 
 
