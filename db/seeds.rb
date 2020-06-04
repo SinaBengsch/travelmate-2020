@@ -1,3 +1,5 @@
+require "open-uri"
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
@@ -39,6 +41,9 @@ user3 = User.create(
   description: "My passion is to take photos while travelling. My favourite city is Paris. I've been there literally 100 times already."
 )
 
+file = URI.open('https://res.cloudinary.com/detomqnqx/image/upload/v1590669761/mkm5osexpqqsbuziicx8.jpg')
+file2 = URI.open('https://res.cloudinary.com/detomqnqx/image/upload/v1590753084/2_Mountainbike_ylnax0.jpg')
+
 activity1 = Activity.create!(
   name: "Surfing in Hawaii",
   description: "Let's go surfing together in one of the locals favourite surf spots Laniakea Beach. If we are lucky we will see some turtles as well!!",
@@ -47,6 +52,7 @@ activity1 = Activity.create!(
   end_date: "16-08-2020",
   user: user1
   )
+  activity1.photo.attach(io: file, filename: 'photo')
 
 activity2 = Activity.create!(
   name: "Eiffel Tower in Paris",
@@ -56,6 +62,7 @@ activity2 = Activity.create!(
   end_date: "01-10-2020",
   user: user3
   )
+  activity2.photo.attach(io: file, filename: 'photo')
 
 puts 'Activities created'
 puts "You now have #{User.count} users and #{Activity.count} activities."
