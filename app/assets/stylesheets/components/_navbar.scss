@@ -2,6 +2,9 @@
   justify-content: space-between;
   background: linear-gradient(45deg, #71DCEB, white);
   padding: 0px 16px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .navbar-lewagon .navbar-collapse {
