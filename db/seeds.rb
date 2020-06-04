@@ -52,7 +52,7 @@ activity1 = Activity.create!(
   end_date: "16-08-2020",
   user: user1
   )
-  activity1.photo.attach(io: file, filename: 'photo')
+  activity1.photo.attach(io: file, filename: 'hawaii.jpg', content_type: 'image/jpg')
 
 activity2 = Activity.create!(
   name: "Eiffel Tower in Paris",
@@ -62,7 +62,7 @@ activity2 = Activity.create!(
   end_date: "01-10-2020",
   user: user3
   )
-  activity2.photo.attach(io: file, filename: 'photo')
+  activity2.photo.attach(io: file2, filename: 'paris.jpg', content_type: 'image/jpg')
 
 puts 'Activities created'
 puts "You now have #{User.count} users and #{Activity.count} activities."
