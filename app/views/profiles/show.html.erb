@@ -1,29 +1,32 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-9">
-      <h2><i class="fa fa-user-circle"></i> <%= current_user.username %></h2>
-      <div class="description">
-        <%= link_to edit_user_registration_path do %>
-        <div class="other-btn"><i class="fas fa-pencil-alt"></i> edit</div>
+      <h2><i class="fa fa-user-circle"></i> <%= @profile.username %></h2>
+       <%= link_to '#' do %>
+        <div class="other-btn"><i class="far fa-comment-dots"></i> contact</div>
         <% end %>
-        <h6>Language: <%= current_user.language %></h4>
-        <p> <%= current_user.description %></p>
-      </div>
 
     <hr>
+      <div class="description">
+        <% if current_user == @profile %>
+          <%= link_to edit_user_registration_path do %>
+          <div class="other-btn"><i class="fas fa-pencil-alt"></i> edit</div>
+          <% end %>
+        <% end %>
+        <p> <%= @profile.description %></p>
+        <h6><strong>Language: </strong><%= @profile.language %></h6>
+      </div>
+    <hr>
+
       <div>
         <%= link_to activities_path do %>
         <div class="other-btn"><i class="fa fa-arrow-left"></i> activities</div>
-        <% end %>
-
-        <%= link_to '#' do %>
-        <div class="other-btn"><i class="far fa-comment-dots"></i> contact</div>
         <% end %>
       </div>
 
     <br>
       <div>
-        <h4><%= current_user.username %>'s activities:</h4>
+        <h4><%= @profile.username.capitalize %>'s activities:</h4>
       </div>
     </div>
   </div>
