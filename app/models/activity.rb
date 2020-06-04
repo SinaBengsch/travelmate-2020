@@ -1,5 +1,6 @@
 class Activity < ApplicationRecord
   belongs_to :user
+  has_one_attached :photo
   validates :name, presence: true, length: { maximum: 30 }
   validates :description, presence: true, length: { maximum: 850 }
   validates :address, presence: true
