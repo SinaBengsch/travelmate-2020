@@ -64,9 +64,11 @@
 
   <div class="container flex-container d-flex mt-5 mb-5">
     <% @activities.each do |activity| %>
+
     <div class="container card-trip">
       <% if activity.photo.attached? %>
         <%= cl_image_tag activity.photo.key, height: 300, width: 400, crop: :fill %>
+
       <% else %>
         <%= image_tag 'travel_1.jpg', class: 'activity-image' %>
       <% end %>
