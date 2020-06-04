@@ -17,4 +17,24 @@ class ActivitiesController < ApplicationController
   def show
     @activity = Activity.find(params[:id])
   end
+
+  def new
+    @activity = Activity.new
+  end
+
+  def create
+    @activity = Activity.new(activities_params)
+    @activity.user = current_user
+    if @activity.save
+      redirect_to dashboard_path
+    else
+      render :new
+    end
+  end
+
+  private
+
+  def activities_params
+    params.require(:activity).permit(:name, :description, :address, :start_date, :end_date)
+  end
 end
