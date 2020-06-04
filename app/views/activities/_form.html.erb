@@ -1,0 +1,25 @@
+<div class="activity-form-container">
+<%= simple_form_for(@activity) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :name, label: false, placeholder:"Name of activity planned", input_html: {class: "form-control w-50"} %>
+    <br>
+    <%= f.input :description, label: false, placeholder:"Please describe your activity..", input_html: {class: "form-control w-50"} %>
+    <br>
+    <%= f.input :address, label: false, placeholder: "Location of planned activity", input_html: {class: "form-control w-50"} %>
+    <br>
+    <%= f.input :start_date, label: false, input_html: {class: "form-control w-50"} %>
+    <br>
+    <%= f.input :end_date, label: false, input_html: {class: "form-control w-50"} %>
+    <br>
+    <%= f.input :photo, as: :file %>
+
+  </div>
+  <div class="form-actions">
+    <%= f.button :submit, { class: "btn btn-primary" } %>
+  </div>
+<% end %>
+
+</div>
