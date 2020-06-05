@@ -44,7 +44,9 @@ position: relative;
   border-radius: 2px;
   outline: 0;
   border-radius: 20px 70px;
-  height: 400px;
+  height: 450px;
+  padding-right: 25px;
+  padding-left: 25px;
   }
 
 .modal-header {
@@ -55,6 +57,10 @@ position: relative;
     border-bottom: 1px solid #dee2e6;
     border-top-left-radius: 1px;
     border-top-right-radius: 1px;
+}
+.modal-footer {
+padding-right: 50px;
+padding-bottom: 20px;
 }
 
 .avatar-bordered {
@@ -150,6 +156,11 @@ padding-top: 30px;
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
+
+.inline {
+    display: inline-block;
+
+    }
 // background: #FFFFFF;
 // mix-blend-mode: normal;
 // border: 3px solid #71DCEB;
