@@ -35,12 +35,15 @@
 
 .card-trip-infos .card-trip-user {
   position: absolute;
-  right: 16px;
-  top: -20px;
-  width: 40px;
+    right: 160px;
+    top: -160px;
+    width: 50px;
+    filter: brightness(1.1);
 }
 .button-margin {
   margin-bottom: 30px;
+  position: relative;
+  left:170px;
 }
 // .container-search {
 //   margin-top: 80px;

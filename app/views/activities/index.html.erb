@@ -66,7 +66,9 @@
                                           </div>
 
                                           <div class="modal-body">
-
+                                            <div class="insert-image">
+                                              <%= cl_image_tag activity.photo.key, height: 110, width: 420, crop: :fill %>
+                                            </div>
                                             <p class="left-even"><p><strong>About:</strong> <%= activity.description %></p></p>
                                           </div>
                                           <div class="modal-footer">
@@ -76,13 +78,17 @@
                                         </div>
                                       </div>
                                     </div>
-
-
-                                   <h2 class="card-activity-name"><td> <%= link_to activity.name, activity %></td></h2>
-                                   <p class="left-even"><td><%= activity.address %></td></p>
+                                      <div class="moving-activity-name">
+                                        <h2 class="card-activity-name"><td> <%= link_to activity.name, activity %></td></h2>
+                                      </div>
+                                      <div class="moving-activity-address">
+                                        <p class="left-even"><td><%= activity.address %></td></p>
+                                      </div>
                                 </div>
-                                  <h2 class="card-activity-timing"><%= activity.start_date %> until <%= activity.end_date %>
-                                  <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+                                  <p class="card-activity-timing"><%= activity.start_date %> until <%= activity.end_date %></p>
+                                  <div class="moving-avatar">
+                                    <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+                                  </div>
                           </div>
 
 
