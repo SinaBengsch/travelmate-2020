@@ -7,7 +7,8 @@
 
 .banner-text {
   padding-top: 50px;
-  margin-left: 50px;
+  margin-bottom: 22%;
+
 }
 
 .banner-home h2 {
@@ -19,11 +20,20 @@
   font-size: 60px;
 }
 
-.text-right {
-  text-align: right;
-  margin-top: 120px;
+.banner-content {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 60px;
   margin-right: 60px;
+  align-items: flex-end;
+  height: 400px;
 }
+
+// .text-right {
+//   text-align: right;
+//   margin-top: 120px;
+//   margin-right: 60px;
+// }
 
 .text-right h2 {
   color: white;
@@ -35,7 +45,6 @@
 }
 
 .homepage-search {
-  margin-left: 53%;
   padding-top: 10px;
   display: flex;
 }
@@ -45,12 +54,12 @@
   margin-right: 15px;
 }
 
-#text-margin-right {
-  margin-right: 200px;
-}
+// #text-margin-right {
+//   margin-right: 200px;
+// }
 
 .homepage-body {
-  margin-left: 40px;
-  margin-right: 40px;
+  margin-left: 60px;
+  margin-right: 60px;
 }
 
