@@ -1,21 +1,39 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-9">
-      <h2><i class="fa fa-user-circle"></i> <%= @profile.username %></h2>
-       <%= link_to '#' do %>
-        <div class="other-btn"><i class="far fa-comment-dots"></i> contact</div>
-        <% end %>
+
+      <div class="d-flex align-items-end">
+        <%= image_tag "https://kitt.lewagon.com/placeholder/users/PhilippIversen", class: "avatar-bordered"%>
+        <div>
+          <div class="row">
+            <%= link_to '#' do %>
+              <% if current_user != @profile %>
+              <div class="other-btn"><i class="far fa-comment-dots"></i> contact</div>
+              <% end %>
+          <% end %>
+          </div>
+          <div class="row">
+            <h2><%= @profile.username %></h2>
+          </div>
+        </div>
+      </div>
 
     <hr>
-      <div class="description">
-        <% if current_user == @profile %>
-          <%= link_to edit_user_registration_path do %>
-          <div class="other-btn"><i class="fas fa-pencil-alt"></i> edit</div>
+      <div class="row">
+
+        <div class="col-9">
+          <p> <%= @profile.description %></p>
+          <h6><strong>Language: </strong><%= @profile.language %></h6>
+        </div>
+
+        <div class="col-3">
+          <% if current_user == @profile %>
+            <%= link_to edit_user_registration_path do %>
+            <div class="other-btn"><i class="fas fa-pencil-alt"></i> edit</div>
+            <% end %>
           <% end %>
-        <% end %>
-        <p> <%= @profile.description %></p>
-        <h6><strong>Language: </strong><%= @profile.language %></h6>
-      </div>
+        </div>
+    </div>
     <hr>
 
       <div>
@@ -24,10 +42,6 @@
         <% end %>
       </div>
 
-    <br>
-      <div>
-        <h4><%= @profile.username.capitalize %>'s activities:</h4>
-      </div>
     </div>
   </div>
 </div>

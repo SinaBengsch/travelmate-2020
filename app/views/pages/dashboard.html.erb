@@ -5,17 +5,28 @@
   <hr>
   <br>
     <% current_user.activities.each do |activity|%>
-    <div class="card">
-      <div class="card-body">
-        <h4><%= activity.name %></h4>
-        <p><%= activity.description %></p>
+    <div class="card-dashboard-activity">
+      <div class="d-flex align-items-center">
+        <div class="card-dashboard-img">
+          <% if activity.photo.attached? %>
+            <%= cl_image_tag activity.photo.key, height: 200, width: 150, crop: :fill %>
+          <% else %>
+            <%= image_tag 'travel_1.jpg', height: 200, width: 150, crop: :fill%>
+          <% end %>
+        </div>
+        <div class="card-dashboard-description">
+          <div>
+            <h4><%= activity.name %></h4>
+            <p><%= activity.description %></p>
+          </div>
+        </div>
       </div>
     </div>
     <br>
     <% end %>
-<!--   <br>
-  <h1>Bookmarked activities</h1>
-  <hr> -->
+    <!--   <br>
+      <h1>Bookmarked activities</h1>
+      <hr> -->
     </div>
   </div>
 </div>
