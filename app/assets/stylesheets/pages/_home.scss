@@ -6,8 +6,9 @@
 }
 
 .banner-text {
-  padding-top: 50px;
-  margin-bottom: 22%;
+  padding-top: 60px;
+  padding-left: 20px;
+  align-self: flex-start;
 
 }
 
@@ -42,6 +43,7 @@
 
 .suggestion {
   margin-top: 10px;
+  font-size: 8px;
 }
 
 .homepage-search {
@@ -58,8 +60,14 @@
 //   margin-right: 200px;
 // }
 
-.homepage-body {
-  margin-left: 60px;
-  margin-right: 60px;
+.suggestion-container {
+  justify-content: space-between;
+  align-items: flex-end;
 }
+
+.refresh {
+  margin-top: 10px;
+  margin-right: 40px;
+}
+
 
