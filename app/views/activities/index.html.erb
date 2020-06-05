@@ -1,24 +1,31 @@
+<!-- This is the banner part -->
+
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1526309206584-51dc789367bd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80);">
   <div class="container">
     <div>
-    <h1><%= params[:search][:location].capitalize %></h1>
-  <%= simple_form_for :search, url: activities_path, method: :get do |f| %>
-  <div class="form-row">
-    <div class="col">
-      <%= f.input :location, input_html: {value: params[:search][:location].capitalize}, class: "form-control", placeholder: "Location", label: false  %>
-    </div>
-    <div class="col">
-      <%= f.input :start_date, placeholder: "Start Date", label: false, class: "form-control"  %>
-    </div>
-    <div class="col">
-      <%= f.input :end_date, placeholder: "End Date", label: false, class: "form-control" %>
-    </div>
-    <div class="col">
-      <%= f.submit class:"btn btn-primary"%>
+      <h1><%= params[:search][:location].capitalize %></h1>
+      <%= simple_form_for :search, url: activities_path, method: :get do |f| %>
+
+      <div class="form-row">
+        <div class="col">
+          <%= f.input :location, input_html: {value: params[:search][:location].capitalize}, class: "form-control", placeholder: "Location", label: false  %>
+        </div>
+        <div class="col">
+          <%= f.input :start_date, placeholder: "Start Date", label: false, class: "form-control"  %>
+        </div>
+        <div class="col">
+          <%= f.input :end_date, placeholder: "End Date", label: false, class: "form-control" %>
+        </div>
+        <div class="col">
+          <%= f.submit class:"btn btn-primary"%>
+        </div>
+      </div>
+      <% end %>
     </div>
   </div>
-  <% end %>
-    </div>
+</div>
+
+<!-- This are the cards -->
 
   <br>
 
@@ -77,9 +84,9 @@
                                   <h2 class="card-activity-timing"><%= activity.start_date %> until <%= activity.end_date %>
                                   <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
                           </div>
-        </div>
 
 
+<div>
         <h2 class="card-activity-name"><td> <%= link_to activity.name, activity %></td></h2>
         <p class="left-even"><td><%= activity.address %></td></p>
       </div>
