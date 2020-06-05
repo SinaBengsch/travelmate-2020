@@ -3,113 +3,82 @@
     <h1><%= params[:query] %></h1>
     <br>
   </div>
-  <div class="flex-container d-flex">
-    <div class="container search-form-control form-group">
-      <%= simple_form_for :search, url: activities_path, method: :get do |f| %>
-      <%= f.input :location, class: "form-control", placeholder: "Location" %>
+
+  <br>
+    <div class="flex-container d-flex">
+      <div class="container search-form-control form-group">
+        <%= simple_form_for :search, url: activities_path, method: :get do |f| %>
+        <%= f.input :location, class: "form-control", placeholder: "Location" %>
+      </div>
+      <div class="container search-form-control form-group">
+        <%= f.input :start_date, placeholder: "Start Date" %>
+      </div>
+      <div class="container search-form-control form-group">
+        <%= f.input :end_date, placeholder: "End Date" %>
+        <%= f.submit %>
+        <% end %>
+      </div>
     </div>
-    <div class="container search-form-control form-group">
-      <%= f.input :start_date, placeholder: "Start Date" %>
-    </div>
-    <div class="container search-form-control form-group">
-      <%= f.input :end_date, placeholder: "End Date" %>
-      <%= f.submit %>
-      <% end %>
-    </div>
-  </div>
-
-</div>
-
-<br>
-
-<div class="container flex-container d-flex mt-5 mb-5">
-  <% @activities.each do |activity| %>
-  <div class="container card-trip">
-    <img src="#" />
-    <div class="card-trip-infos">
-      <div>
-        <!-- Button trigger modal -->
-        <div class="button-margin">
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-           Detail
-         </button>
-       </div>
-       <!-- Modal -->
-       <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-
-            <div class="modal-header">
-              <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-activity-user avatar-bordered" />
-              <h5 class="modal-title" id="exampleModalLongTitle"><%= activity.name %></h5>
-
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <td><p class="left-even" id="address-showpage"><%= activity.address %></p><h2 class="card-activity-timing"><%= activity.start_date %> until <%= activity.end_date %></h2></td>
-              <p class="left-even"><p><strong>About:</strong> <%= activity.description %></p></p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Send a message</button>
-<br>
+  <br>
 
   <div class="container flex-container d-flex mt-5 mb-5">
-    <% @activities.each do |activity| %>
+    <div class="cards">
+      <% @activities.each do |activity| %>
 
-    <div class="container card-trip">
-      <% if activity.photo.attached? %>
-        <%= cl_image_tag activity.photo.key, height: 300, width: 400, crop: :fill %>
+      <div class="container card-trip">
+          <% if activity.photo.attached? %>
+            <%= cl_image_tag activity.photo.key, height: 300, width: 400, crop: :fill %>
 
-      <% else %>
-        <%= image_tag 'travel_1.jpg', class: 'activity-image' %>
-      <% end %>
-      <div class="card-trip-infos">
-        <div>
-          <!-- Button trigger modal -->
-          <div class="button-margin">
+          <% else %>
+            <%= image_tag 'travel_1.jpg', class: 'activity-image' %>
+          <% end %>
+                            <div class="card-trip-infos">
+                              <div>
+                                    <!-- Button trigger modal -->
+                                    <div class="button-margin">
 
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal_<%= activity.id %>">
-             Detail
-            </button>
-          </div>
-          <!-- Modal -->
-          <div class="modal fade" id="modal_<%= activity.id %>" tabindex="-1" role="dialog" aria-labelledby="modal_<%= activity.id %>" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-              <div class="modal-content">
+                                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal_<%= activity.id %>">
+                                       Detail
+                                      </button>
+                                    </div>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="modal_<%= activity.id %>" tabindex="-1" role="dialog" aria-labelledby="modal_<%= activity.id %>" aria-hidden="true">
+                                      <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
 
-                <div class="modal-header">
-                  <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-activity-user avatar-bordered" />
-                  <h5 class="modal-title" id="exampleModalLongTitle"><%= activity.name %></h5>
+                                          <div class="modal-header">
+                                            <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-activity-user avatar-bordered" />
+                                            <h5 class="modal-title" id="exampleModalLongTitle"><%= activity.name %></h5>
 
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <td><p class="left-even" id="address-showpage"><%= activity.address %></p><h2 class="card-activity-timing"><%= activity.start_date %> until <%= activity.end_date %></h2></td>
-                  <p class="left-even"><p><strong>About:</strong> <%= activity.description %></p></p>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Profile</button>
-                </div>
-              </div>
-            </div>
-          </div>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                              <span aria-hidden="true">&times;</span>
+                                            </button>
+                                          </div>
+                                          <div class="modal-body">
+                                            <td><p class="left-even" id="address-showpage"><%= activity.address %></p><h2 class="card-activity-timing"><%= activity.start_date %> until <%= activity.end_date %></h2></td>
+                                            <p class="left-even"><p><strong>About:</strong> <%= activity.description %></p></p>
+                                          </div>
+                                          <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary">Profile</button>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+
+
+                                   <h2 class="card-activity-name"><td> <%= link_to activity.name, activity %></td></h2>
+                                   <p class="left-even"><td><%= activity.address %></td></p>
+                                </div>
+                                  <h2 class="card-activity-timing"><%= activity.start_date %> until <%= activity.end_date %>
+                                  <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+                          </div>
         </div>
-      </div>
 
-      <h2 class="card-activity-name"><td> <%= link_to activity.name, activity %></td></h2>
-      <p class="left-even"><td><%= activity.address %></td></p>
+        <% end %>
+      </div>
     </div>
-    <h2 class="card-activity-timing"><%= activity.start_date %> until <%= activity.end_date %>
-      <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
-    </div>
-  </div>
-  <% end %>
+
 
 
 
