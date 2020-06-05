@@ -58,7 +58,9 @@
                                           </div>
 
                                           <div class="modal-body">
-
+                                            <div class="insert-image">
+                                              <%= cl_image_tag activity.photo.key, height: 110, width: 420, crop: :fill %>
+                                            </div>
                                             <p class="left-even"><p><strong>About:</strong> <%= activity.description %></p></p>
                                           </div>
                                           <div class="modal-footer">
@@ -74,7 +76,9 @@
                                    <p class="left-even"><td><%= activity.address %></td></p>
                                 </div>
                                   <h2 class="card-activity-timing"><%= activity.start_date %> until <%= activity.end_date %>
-                                  <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+                                  <div class="moving-avatar">
+                                    <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+                                  </div>
                           </div>
         </div>
 
