@@ -11,7 +11,7 @@
           <% if activity.photo.attached? %>
             <%= cl_image_tag activity.photo.key, height: 200, width: 150, crop: :fill %>
           <% else %>
-            <%= image_tag 'travel_1.jpg', height: 200, width: 150, crop: :fill%>
+            <%= image_tag 'travel_1.jpg', height: 300, width: 250, crop: :fill%>
           <% end %>
         </div>
         <div class="card-dashboard-description">
