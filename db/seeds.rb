@@ -84,20 +84,20 @@ user7demo = User.create(
 
 # setting up cloudinary pictures
 
-# file1 = URI.open('')
-# file2 = URI.open('')
-# file3 = URI.open('')
-# file4 = URI.open('')
-# file5 = URI.open('')
-# file6 = URI.open('')
-# file7 = URI.open('')
-# file8 = URI.open('')
-# file9 = URI.open('')
-# file10 = URI.open('')
-# file11 = URI.open('')
+file1 = URI.open('https://res.cloudinary.com/detomqnqx/image/upload/v1591294685/hawaii-surfing_weni1i.jpg')
+file2 = URI.open('https://res.cloudinary.com/detomqnqx/image/upload/v1591294681/hawaii-vulcano_buom1a.jpg')
+file3 = URI.open('https://res.cloudinary.com/detomqnqx/image/upload/v1591294682/hawaii-pearl-harbor_mk6l4r.jpg')
+file4 = URI.open('https://res.cloudinary.com/detomqnqx/image/upload/v1591294683/paris-eiffel_n5lrme.jpg')
+file5 = URI.open('https://res.cloudinary.com/detomqnqx/image/upload/v1591294685/paris-louvre_rguguo.jpg')
+file6 = URI.open('https://res.cloudinary.com/detomqnqx/image/upload/v1591294674/bali-snorkeling_ahn9lf.jpg')
+file7 = URI.open('https://res.cloudinary.com/detomqnqx/image/upload/v1591294681/bali-monkey_onk6pw.jpg')
+file8 = URI.open('https://res.cloudinary.com/detomqnqx/image/upload/v1591294674/bali-mountain_sziezu.jpg')
+file9 = URI.open('https://res.cloudinary.com/detomqnqx/image/upload/v1591294677/bali-surfing_gs1ndr.jpg')
+file10 = URI.open('https://res.cloudinary.com/detomqnqx/image/upload/v1591294675/bali-beach_d1vkyv.jpg')
+file11 = URI.open('https://res.cloudinary.com/detomqnqx/image/upload/v1591294683/bali.surfing-2_ndztqx.jpg')
 
-file = URI.open('https://res.cloudinary.com/detomqnqx/image/upload/v1591267370/travel_2_gaoll5.jpg')
-file2 = URI.open('https://res.cloudinary.com/detomqnqx/image/upload/v1591267369/travel_1_bvemcd.jpg')
+# file = URI.open('https://res.cloudinary.com/detomqnqx/image/upload/v1591267370/travel_2_gaoll5.jpg')
+# file2 = URI.open('https://res.cloudinary.com/detomqnqx/image/upload/v1591267369/travel_1_bvemcd.jpg')
 
 # All activities
 activity1 = Activity.create!(
@@ -108,11 +108,10 @@ activity1 = Activity.create!(
   end_date: "22-08-2020",
   user: user1
   )
-# activity1.photo.attach(io: file1, filename: 'photo')
+activity1.photo.attach(io: file1, filename: 'photo')
 # activity1.photo.attach(io: file, filename: 'hawaii.jpg', content_type: 'image/jpg')
+# activity1.photo.attach(io: file, filename: 'travel_1.jpg', content_type: 'image/jpg')
 
-activity1.photo.attach(io: file, filename: 'travel_1.jpg', content_type: 'image/jpg')
-# activity.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
 
 activity2 = Activity.create(
   name: "Visit Diamond Head",
@@ -122,10 +121,9 @@ activity2 = Activity.create(
   end_date: "22-08-2020",
   user: user1
   )
-# activity2.photo.attach(io: file2, filename: 'photo')
+activity2.photo.attach(io: file2, filename: 'photo')
 # activity2.photo.attach(io: file2, filename: 'paris.jpg', content_type: 'image/jpg')
-
-activity2.photo.attach(io: file2, filename: 'travel_2.jpg', content_type: 'image/jpg')
+# activity2.photo.attach(io: file2, filename: 'travel_2.jpg', content_type: 'image/jpg')
 
 activity3 = Activity.create(
   name: "Visit Pearl Harbor",
@@ -135,7 +133,7 @@ activity3 = Activity.create(
   end_date: "22-08-2020",
   user: user1
   )
-# activity3.photo.attach(io: file3, filename: 'photo')
+activity3.photo.attach(io: file3, filename: 'photo')
 
 activity4 = Activity.create(
   name: "Eiffel Tower in Paris",
@@ -145,7 +143,7 @@ activity4 = Activity.create(
   end_date: "01-10-2020",
   user: user3
   )
-# activity4.photo.attach(io: file4, filename: 'photo')
+activity4.photo.attach(io: file4, filename: 'photo')
 
 activity5 = Activity.create(
   name: "Visit the Louvre in Paris",
@@ -155,7 +153,7 @@ activity5 = Activity.create(
   end_date: "03-10-2020",
   user: user3
   )
-# activity5.photo.attach(io: file5, filename: 'photo')
+activity5.photo.attach(io: file5, filename: 'photo')
 
 activity6 = Activity.create(
   name: "Snorkeling Blue Lagoon",
@@ -165,7 +163,7 @@ activity6 = Activity.create(
   end_date: "20-10-2020",
   user: user2
   )
-# activity6.photo.attach(io: file6, filename: 'photo')
+activity6.photo.attach(io: file6, filename: 'photo')
 
 activity7 = Activity.create(
   name: "Monkey Forest Sanctuary",
@@ -175,7 +173,7 @@ activity7 = Activity.create(
   end_date: "30-10-2020",
   user: user4
   )
-# activity7.photo.attach(io: file7, filename: 'photo')
+activity7.photo.attach(io: file7, filename: 'photo')
 
 activity8 = Activity.create(
   name: "Hike Mount Agung",
@@ -185,7 +183,7 @@ activity8 = Activity.create(
   end_date: "30-10-2020",
   user: user4
   )
-# activity8.photo.attach(io: file8, filename: 'photo')
+activity8.photo.attach(io: file8, filename: 'photo')
 
 activity9 = Activity.create(
   name: "Surfing Bali",
@@ -195,7 +193,7 @@ activity9 = Activity.create(
   end_date: "30-10-2020",
   user: user4
   )
-# activity9.photo.attach(io: file9, filename: 'photo')
+activity9.photo.attach(io: file9, filename: 'photo')
 
 activity10 = Activity.create(
   name: "Swimming, Snorkeling, Surfing",
@@ -205,7 +203,7 @@ activity10 = Activity.create(
   end_date: "30-10-2020",
   user: user5
   )
-# activity10.photo.attach(io: file10, filename: 'photo')
+activity10.photo.attach(io: file10, filename: 'photo')
 
 activity11 = Activity.create(
   name: "Secret Surfing Spot",
@@ -215,7 +213,7 @@ activity11 = Activity.create(
   end_date: "24-10-2020",
   user: user6
   )
-# activity11.photo.attach(io: file11, filename: 'photo')
+activity11.photo.attach(io: file11, filename: 'photo')
 
 puts 'Activities created'
 puts "You now have #{User.count} users and #{Activity.count} activities."
