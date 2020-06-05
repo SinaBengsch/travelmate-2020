@@ -14,19 +14,19 @@
       </div>
 
         <div class="container-search">
-          <%= form_tag activities_path, method: :get do %>
+          <%= simple_form_for :search, url: activities_path, method: :get do |f| %>
 
           <div class="homepage-search">
             <div class='inline2' id="address-input">
-              <%= text_field_tag :query,
-              params[:query],
-              class: "form-control address-input",
-                placeholder: "Location"
+              <%= f.input :location,
+              input_html: {class: "form-control address-input"},
+                placeholder: "Location",
+                label: false
               %>
               </div>
 
               <div class='inline'>
-                <%= submit_tag "Search", class: "btn btn-danger" %>
+                <%= f.submit "Search", class: "btn btn-danger" %>
               </div>
             <% end %>
             </div>
