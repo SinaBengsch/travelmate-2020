@@ -5,13 +5,14 @@
 
 // General style
 $font-family-sans-serif:  $body-font;
-$headings-font-family:    $headers-font;
+$headings-font-family:    $headers-font-2;
 $body-bg:                 $light-gray;
 $font-size-base: 1rem;
 
 // Colors
 $body-color: $gray;
-$primary:    $blue;
+// $primary:    $blue;
+$primary:    #71DCEB;
 $success:    $green;
 $info:       $yellow;
 $danger:     $red;
