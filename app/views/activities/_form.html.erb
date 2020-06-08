@@ -1,5 +1,5 @@
 <div class="activity-form-container">
-<%= simple_form_for(@activity) do |f| %>
+  <%= simple_form_for(@activity) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
@@ -16,11 +16,23 @@
     <br>
     <%= f.input :photo, as: :file %>
     <br>
-    <%= f.input :category_ids, label: false, placeholder: "Categories", collection: Category.all, as: :check_boxes %>
+    <div class="form-group">
+      <label class="control-label check_boxes optional">Categories</label>
+      <div class="category-choices">
+        <% Category.all.each do |category| %>
+        <input type="checkbox" class="hidden" value="<%= category.id %>" name="activity[category_ids][]" id="activity_category_ids_<%= category.id %>">
+        <label for="acitivity_category_ids_<%= category.id %>">
+          <%= category.name %>
+          <i class="fa fa-check"></i>
+        </label>
+        <% end %>
+      </div>
+    </div>
+
   </div>
   <div class="form-actions">
     <%= f.button :submit, { class: "btn btn-primary" } %>
   </div>
-<% end %>
+  <% end %>
 
 </div>

@@ -36,6 +36,7 @@ class ActivitiesController < ApplicationController
     @activity = Activity.new(activities_params)
     @activity.user = current_user
     if @activity.save
+      raise
       redirect_to dashboard_path
     else
       render :new
@@ -45,6 +46,15 @@ class ActivitiesController < ApplicationController
   private
 
   def activities_params
-    params.require(:activity).permit(:name, :description, :address, :start_date, :end_date, :photo)
+    params.require(:activity)
+    .permit(
+      :name,
+      :description,
+      :address,
+      :start_date,
+      :end_date,
+      :photo,
+      { category_ids: [] }
+      )
   end
 end
