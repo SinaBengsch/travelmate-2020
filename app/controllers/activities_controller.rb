@@ -1,7 +1,7 @@
 class ActivitiesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   def index
-    @activities = Activity.all
+    @activities = Activity.geocoded
     if params[:search].present?
       if params[:search][:location].present?
         @activities = @activities.where("address ILIKE ?", "%#{params[:search][:location]}%")
@@ -15,6 +15,12 @@ class ActivitiesController < ApplicationController
 
       if params[:search][:end_date].present?
         @activities = @activities.where("end_date <= ?", params[:search][:end_date])
+      end
+      @markers = @activities.map do |activity|
+      {
+        lat: activity.latitude,
+        lng: activity.longitude
+      }
       end
     end
   end
