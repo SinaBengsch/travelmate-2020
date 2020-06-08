@@ -5,6 +5,8 @@ class ActivitiesController < ApplicationController
     if params[:search].present?
       if params[:search][:location].present?
         @activities = @activities.where("address ILIKE ?", "%#{params[:search][:location]}%")
+        # response = HTTParty.get("https://api.unsplash.com/photos/?client_id=XETNGaDE5ETAk3lyib95JriLrBe_v9rfmn6ISElKAHc&query=%#{params[:search][:location]}%")
+        # raise
       end
 
       if params[:search][:start_date].present?
