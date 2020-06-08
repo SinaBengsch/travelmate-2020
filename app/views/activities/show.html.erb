@@ -10,7 +10,7 @@
             <%= image_tag 'travel_1.jpg', class: 'activity-image' %>
           <% end %>
 
-          <div >
+          <div>
             <% if @new_bookmark %>
               <%= simple_form_for([@activity, @new_bookmark], remote: true) do |f|%>
               <%= f.button :button do %><i class="far fa-bookmark"></i><% end %>
