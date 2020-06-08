@@ -1,5 +1,7 @@
 class ActivitiesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
+
+
   def index
     @activities = Activity.all
     if params[:search].present?
@@ -19,6 +21,11 @@ class ActivitiesController < ApplicationController
 
   def show
     @activity = Activity.find(params[:id])
+    if current_user.bookmarks.find_by(activity: @activity).nil?
+      @new_bookmark = Bookmark.new
+    else
+      @bookmark = current_user.bookmarks.find_by(activity: @activity)
+    end
   end
 
   def new

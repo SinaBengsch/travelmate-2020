@@ -1,15 +1,22 @@
-<div class="container-show">
+<div class="container">
   <div class="box">
     <div class="cards-showpage">
       <div class="card-activity-showpage">
+        <div class="card-activity-infos-showpage">
 
-        <div class="card-activity-infos-showpage" >
+          <% if @activity.photo.attached? %>
+            <%= cl_image_tag @activity.photo.key, height: 150, width: 200, crop: :fill %>
+          <% else %>
+            <%= image_tag 'travel_1.jpg', class: 'activity-image' %>
+          <% end %>
 
           <div >
-            <% if @activity.photo.attached? %>
-              <%= cl_image_tag @activity.photo.key, height: 30, width: 40, crop: :fill %>
-            <% else %>
-              <%= image_tag 'travel_1.jpg', class: 'activity-image' %>
+            <% if @new_bookmark %>
+              <%= simple_form_for([@activity, @new_bookmark], remote: true) do |f|%>
+              <%= f.button :button do %><i class="far fa-bookmark"></i><% end %>
+            <% end %>
+            <% elsif @bookmark %>
+              <%= link_to '<i class="fas fa-bookmark"></i>'.html_safe, bookmark_path(@bookmark), method: :delete, data: {confirm: "Are your sure you want to remove this bookmark?"} %>
             <% end %>
             <h2 id="name-showpage"><td> <%= link_to @activity.name, @activity %></td></h2>
             <td><p class="left-even" id="address-showpage"><%= @activity.address %></p><h2 class="card-activity-timing"><%= @activity.start_date %> until <%= @activity.end_date %></h2></td>
