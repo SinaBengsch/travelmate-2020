@@ -1,10 +1,12 @@
 class ActivitiesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   def index
-    @activities = Activity.geocoded
+    @activities = Activity.all
     if params[:search].present?
+
       if params[:search][:location].present?
         @activities = @activities.where("address ILIKE ?", "%#{params[:search][:location]}%")
+        @activities = Activity.geocoded
       end
 
       if params[:search][:start_date].present?
@@ -17,9 +19,12 @@ class ActivitiesController < ApplicationController
       @markers = @activities.map do |activity|
       {
         lat: activity.latitude,
-        lng: activity.longitude
+        lng: activity.longitude,
+        infoWindow: render_to_string(partial: "activities/map_box", locals: { activity: activity })
       }
       end
+    else
+      @activities = Activity.all
     end
   end
 
