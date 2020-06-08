@@ -14,7 +14,8 @@
     <br>
     <%= f.input :end_date, as: :string, label: false, placeholder: "end date",input_html: {id: "range_end", class: "form-control w-50"}%>
     <%= f.input :photo, as: :file %>
-
+    <br>
+    <%= f.input :category_ids, label: false, placeholder: "Categories", collection: Category.all, as: :check_boxes %>
   </div>
   <div class="form-actions">
     <%= f.button :submit, { class: "btn btn-primary" } %>
