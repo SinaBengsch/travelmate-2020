@@ -39,6 +39,7 @@ gem 'devise'
 gem "algoliasearch-rails"
 gem 'geocoder'
 gem 'pundit'
+gem 'httparty'
 
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
