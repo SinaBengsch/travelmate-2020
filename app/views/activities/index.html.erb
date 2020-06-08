@@ -11,10 +11,10 @@
           <%= f.input :location, input_html: {value: params[:search][:location].capitalize}, class: "form-control", placeholder: "Location", label: false  %>
         </div>
         <div class="col">
-          <%= f.input :start_date, placeholder: "Start Date", label: false, class: "form-control"  %>
+          <%= f.input :start_date, placeholder: "Start Date", as: :string, input_html: {id: "range_start"}, label: false, class: "form-control" %>
         </div>
         <div class="col">
-          <%= f.input :end_date, placeholder: "End Date", label: false, class: "form-control" %>
+          <%= f.input :end_date, placeholder: "End Date", as: :string, input_html: {id: "range_end"}, label: false, class: "form-control" %>
         </div>
         <div class="col">
           <%= f.submit "Search", class:"btn btn-primary"%>
