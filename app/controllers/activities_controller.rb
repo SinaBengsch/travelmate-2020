@@ -1,9 +1,7 @@
 class ActivitiesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
-
   def index
-
     @activities = Activity.all
     @categories = Category.all
 
@@ -28,14 +26,12 @@ class ActivitiesController < ApplicationController
         activity = Activity.find
         category = Category.find(params[:search][:category].to_i)[:name]
         @activities = @activities.where(category)
-      raise
-
-      @markers = @activities.map do |activity|
-      {
-        lat: activity.latitude,
-        lng: activity.longitude
-      }
-
+        @markers = @activities.map do |activity|
+          {
+            lat: activity.latitude,
+            lng: activity.longitude
+          }
+        end
       end
     end
   end
