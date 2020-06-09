@@ -1,5 +1,5 @@
 <div class="activity-form-container">
-<%= simple_form_for(@activity) do |f| %>
+  <%= simple_form_for(@activity) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
@@ -14,12 +14,20 @@
     <br>
     <%= f.input :end_date, as: :string, label: false, placeholder: "end date",input_html: {id: "range_end", class: "form-control w-50"}%>
     <%= f.input :photo, as: :file %>
+    <br>
 
+    <div class="form-group">
+      <select class="select2" multiple="multiple" name="activity[category_ids][]" style="width: 75 %">
+        <% Category.all.each do |category| %>
+          <option value="<%= category.id %>"><%= category.name %></option>
+          <% end %>
+      </select>
+    </div>
   </div>
+  <br>
+
   <div class="form-actions">
     <%= f.button :submit, { class: "btn btn-primary" } %>
   </div>
-
-<% end %>
-
+  <% end %>
 </div>

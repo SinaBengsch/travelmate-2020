@@ -1,11 +1,10 @@
 .box {
-   display: flex;
-   justify-content: space-between;
-   align-items: top;
+  display: flex;
+  justify-content: space-between;
+  align-items: top;
+  margin-top: 30px;
  }
- .container-show {
-   margin-top: 30px;
- }
+
  h1 {
    margin-bottom: 20px;
    text-align: left;
@@ -31,6 +30,7 @@ position: relative;
     margin-bottom: 220px;
     margin-right: 40px;
   }
+
 
 .modal-content {
   position: relative;
@@ -102,7 +102,7 @@ padding-top: 30px;
    overflow: hidden;
    background: white;
    box-shadow: 0 0 15px rgba(0,0,0,0.2);
-   border: 1px solid black;
+   border: 1px;
   border-bottom-left-radius: 60px;
   border-top-right-radius: 60px;
   border-top-left-radius: 15px;
