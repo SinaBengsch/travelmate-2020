@@ -3,17 +3,12 @@ class ActivitiesController < ApplicationController
 
 
   def index
-
     @activities = Activity.all
     @categories = Category.all
-
-    @activities = Activity.geocoded
-
     if params[:search].present?
       if params[:search][:location].present?
         @activities = @activities.where("address ILIKE ?", "%#{params[:search][:location]}%")
-        # response = HTTParty.get("https://api.unsplash.com/photos/?client_id=XETNGaDE5ETAk3lyib95JriLrBe_v9rfmn6ISElKAHc&query=%#{params[:search][:location]}%")
-        # raise
+        @activities = Activity.geocoded
       end
 
       if params[:search][:start_date].present?
@@ -33,10 +28,13 @@ class ActivitiesController < ApplicationController
       @markers = @activities.map do |activity|
       {
         lat: activity.latitude,
-        lng: activity.longitude
+        lng: activity.longitude,
+        infoWindow: render_to_string(partial: "activities/map_box", locals: { activity: activity })
       }
 
       end
+    else
+      @activities = Activity.all
     end
   end
 
