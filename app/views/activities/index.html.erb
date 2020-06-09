@@ -29,13 +29,13 @@
   </div>
 
 <!-- This is the map -->
-
+<div class="container flex-container d-flex mt-5 mb-5">
 <div id="map"
-     style="width: 100%; height: 600px;"
+     style="width: 1000px; height: 500px;"
      data-markers="<%= @markers.to_json %>"
      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
 </div>
-
+</div>
 
 <!-- This are the cards -->
 <br>

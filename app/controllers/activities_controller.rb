@@ -18,17 +18,16 @@ class ActivitiesController < ApplicationController
         @activities = @activities.where("end_date <= ?", params[:search][:end_date])
       end
 
-      if params[:search][:category].present?
-        activity = Activity.find
+      # if params[:search][:category].present?
+      #   activity = Activity.find
         # category = Category.find(params[:search][:category].to_i)[:name]
-        # @activities = @activities.where(category)
-        @markers = @activities.map do |activity|
-          {
-            lat: activity.latitude,
-            lng: activity.longitude,
-            infoWindow: render_to_string(partial: "activities/map_box", locals: { activity: activity })
-          }
-        end
+      # @activities = @activities.where(category)
+      @markers = @activities.map do |activity|
+        {
+          lat: activity.latitude,
+          lng: activity.longitude,
+          infoWindow: render_to_string(partial: "activities/map_box", locals: { activity: activity })
+        }
       end
 
     else
