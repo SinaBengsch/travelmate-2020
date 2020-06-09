@@ -3,7 +3,7 @@ class ActivitiesController < ApplicationController
 
   def index
     @activities = Activity.all
-    @categories = Category.all
+    # @categories = Category.all
     if params[:search].present?
       if params[:search][:location].present?
         @activities = @activities.where("address ILIKE ?", "%#{params[:search][:location]}%")
@@ -20,8 +20,8 @@ class ActivitiesController < ApplicationController
 
       if params[:search][:category].present?
         activity = Activity.find
-        category = Category.find(params[:search][:category].to_i)[:name]
-        @activities = @activities.where(category)
+        # category = Category.find(params[:search][:category].to_i)[:name]
+        # @activities = @activities.where(category)
         @markers = @activities.map do |activity|
           {
             lat: activity.latitude,
