@@ -1,6 +1,6 @@
 <!-- This is the banner part -->
 
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1526309206584-51dc789367bd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80);">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/hawaii);">
   <div class="container d-flex justify-content-around">
     <div>
       <h1><%= params[:search][:location].upcase %></h1>
@@ -11,10 +11,10 @@
           <%= f.input :location, input_html: {value: params[:search][:location].capitalize, class: "form-control address-input"}, placeholder: "Location", label: false  %>
         </div>
         <div class="col">
-          <%= f.input :start_date, placeholder: "Start Date", label: false, class: "form-control"  %>
+          <%= f.input :start_date, placeholder: "Start Date", as: :string, input_html: {id: "range_start"}, label: false, class: "form-control" %>
         </div>
         <div class="col">
-          <%= f.input :end_date, placeholder: "End Date", label: false, class: "form-control" %>
+          <%= f.input :end_date, placeholder: "End Date", as: :string, input_html: {id: "range_end"}, label: false, class: "form-control" %>
         </div>
         <div class="col">
           <%= f.input :category, collection: @categories, placeholder: "Categories", label: false%>
@@ -28,8 +28,17 @@
     </div>
   </div>
 
-  <!-- This are the cards -->
-  <br>
+<!-- This is the map -->
+
+<div id="map"
+     style="width: 100%; height: 600px;"
+     data-markers="<%= @markers.to_json %>"
+     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+</div>
+
+
+<!-- This are the cards -->
+<br>
 
   <div class="container flex-container d-flex mt-5 mb-5">
     <div class="cards">
@@ -63,29 +72,29 @@
                     </div>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
-                    </button>
+                      </button>
                   </div>
 
                   <div class="modal-body">
                     <div class="insert-image">
-                      <%= cl_image_tag activity.photo.key, height: 110, width: 420, crop: :fill %>
+                      <%#= cl_image_tag activity.photo.key, height: 110, width: 420, crop: :fill %>
                     </div>
-                    <p class="left-even"><p><strong>About:</strong> <%= activity.description %></p></p>
-                  </div>
 
-                  <div class="modal-footer">
-                    <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+                    <div class="modal-body">
+                      <div class="insert-image">
+                        <%= cl_image_tag activity.photo.key, height: 110, width: 420, crop: :fill %>
+                      </div>
+                      <p class="left-even"><p><strong>About:</strong> <%= activity.description %></p></p>
+                    </div>
 
-                    <%= link_to 'Profile', profile_path(activity.user), { class: "btn btn-primary" } %>
-
-
-
-
+                    <div class="modal-footer">
+                      <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+                      <%= link_to 'Profile', profile_path(activity.user), { class: "btn btn-primary" } %>
+                    </div>
                   </div>
 
                 </div>
               </div>
-            </div>
 
             <!-- Outside of Modal -->
 
@@ -95,25 +104,17 @@
             <div class="moving-activity-address">
               <p class="left-even"><td><%= activity.address %></td></p>
             </div>
-          </div>
+            </div>
 
-          <p class="card-activity-timing"><%= activity.start_date %> until <%= activity.end_date %></p>
+            <p class="card-activity-timing"><%= activity.start_date %> until <%= activity.end_date %></p>
 
-          <div class="moving-avatar">
-            <img src="https://res.cloudinary.com/detomqnqx/image/upload/v1591364375/photo_xbevd5.gif" class="card-trip-user avatar-bordered" />
+            <div class="moving-avatar">
+              <img src="https://res.cloudinary.com/detomqnqx/image/upload/v1591364375/photo_xbevd5.gif" class="card-trip-user avatar-bordered" />
+            </div>
           </div>
         </div>
       </div>
-
       <% end %>
     </div>
   </div>
-
-
-
-
-
-
-
-
 

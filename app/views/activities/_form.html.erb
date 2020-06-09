@@ -6,17 +6,13 @@
   <div class="form-inputs">
     <%= f.input :name, label: false, placeholder:"Name of activity planned", input_html: {class: "form-control w-50"} %>
     <br>
-    <%= f.input :description, label: false, placeholder:"Please describe your activity", input_html: {class: "form-control w-50"} %>
+    <%= f.input :description, as: :text, label: false, placeholder:"Please describe your activity..", input_html: {class: "form-control w-50"} %>
     <br>
-    <%= f.input :address, label: false, placeholder: "Location of planned activity", input_html: {class: "form-control w-50"} %>
-
-<%#= f.input :location, input_html: {value: params[:search][:location].capitalize, class: "form-control address-input"}, placeholder: "Location", label: false  %>
-
+    <%= f.input :address, label: false, placeholder: "Location of planned activity", input_html: {class: "form-control address-input w-50"} %>
     <br>
-    <%= f.input :start_date, label: false, input_html: {class: "form-control w-20"} %>
+    <%= f.input :start_date, as: :string, label: false, placeholder: "start date", input_html: {id: "range_start", class: "form-control w-50"}%>
     <br>
-    <%= f.input :end_date, label: false, input_html: {class: "form-control w-20"} %>
-    <br>
+    <%= f.input :end_date, as: :string, label: false, placeholder: "end date",input_html: {id: "range_end", class: "form-control w-50"}%>
     <%= f.input :photo, as: :file %>
     <br>
 
@@ -34,5 +30,4 @@
     <%= f.button :submit, { class: "btn btn-primary" } %>
   </div>
   <% end %>
-
 </div>

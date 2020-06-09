@@ -45,6 +45,8 @@ ActiveRecord::Schema.define(version: 2020_06_08_160447) do
     t.date "end_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.float "latitude"
+    t.float "longitude"
     t.index ["user_id"], name: "index_activities_on_user_id"
   end
 
@@ -55,6 +57,15 @@ ActiveRecord::Schema.define(version: 2020_06_08_160447) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["activity_id"], name: "index_activity_categories_on_activity_id"
     t.index ["category_id"], name: "index_activity_categories_on_category_id"
+  end
+
+  create_table "bookmarks", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "activity_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["activity_id"], name: "index_bookmarks_on_activity_id"
+    t.index ["user_id"], name: "index_bookmarks_on_user_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -109,5 +120,7 @@ ActiveRecord::Schema.define(version: 2020_06_08_160447) do
   add_foreign_key "activities", "users"
   add_foreign_key "activity_categories", "activities"
   add_foreign_key "activity_categories", "categories"
+  add_foreign_key "bookmarks", "activities"
+  add_foreign_key "bookmarks", "users"
   add_foreign_key "taggings", "tags"
 end
