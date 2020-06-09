@@ -16,6 +16,11 @@
         </div>
         <div class="card-dashboard-description">
           <div>
+            <% activity.categories.each do |category| %>
+              <%= category.name %>
+            <% end %>
+          </div>
+          <div>
             <h4><%= activity.name %></h4>
             <p><%= activity.description %></p>
           </div>

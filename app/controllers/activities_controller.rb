@@ -36,7 +36,6 @@ class ActivitiesController < ApplicationController
     @activity = Activity.new(activities_params)
     @activity.user = current_user
     if @activity.save
-      raise
       redirect_to dashboard_path
     else
       render :new
