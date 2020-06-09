@@ -23,12 +23,14 @@ class ActivitiesController < ApplicationController
         category = Category.find(params[:search][:category].to_i)[:name]
         @activities = @activities.where(category)
         @markers = @activities.map do |activity|
-        {
-          lat: activity.latitude,
-          lng: activity.longitude,
-          infoWindow: render_to_string(partial: "activities/map_box", locals: { activity: activity })
-        }
+          {
+            lat: activity.latitude,
+            lng: activity.longitude,
+            infoWindow: render_to_string(partial: "activities/map_box", locals: { activity: activity })
+          }
+        end
       end
+
     else
       @activities = Activity.all
     end
