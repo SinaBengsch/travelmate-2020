@@ -2,6 +2,7 @@ class ActivitiesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
+    @location = params[:search][:location].try(:upcase) if params[:search]
     @activities = Activity.all
     @categories = Category.all
     if params[:search].present?
