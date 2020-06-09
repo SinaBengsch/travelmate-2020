@@ -49,6 +49,7 @@
                 <p><%= bookmark.activity.start_date %> – <%= bookmark.activity.end_date %></p>
                 <img src="https://res.cloudinary.com/detomqnqx/image/upload/v1591365485/creepy_dan_v0t1mx.png" class="avatar-bordered" />
                 <!-- bookmark -->
+                <%= link_to '<i class="fas fa-bookmark"></i>'.html_safe, bookmark_path(bookmark), method: :delete, data: {confirm: "Are your sure you want to remove this bookmark?"} %>
                 </div>
             </div>
           </div>
