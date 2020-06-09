@@ -7,6 +7,8 @@
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "4.2.2",
     "bootstrap": "^4.5.0",
+    "bootstrap-multiselect": "^0.9.15",
+    "bootstrap-select": "^1.13.17",
     "flatpickr": "^4.6.3",
     "jquery": "^3.5.1",
     "mapbox-gl": "^1.10.1",
