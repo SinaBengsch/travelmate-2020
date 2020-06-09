@@ -9,6 +9,9 @@
     <%= f.input :description, label: false, placeholder:"Please describe your activity", input_html: {class: "form-control w-50"} %>
     <br>
     <%= f.input :address, label: false, placeholder: "Location of planned activity", input_html: {class: "form-control w-50"} %>
+
+<%#= f.input :location, input_html: {value: params[:search][:location].capitalize, class: "form-control address-input"}, placeholder: "Location", label: false  %>
+
     <br>
     <%= f.input :start_date, label: false, input_html: {class: "form-control w-20"} %>
     <br>
@@ -16,25 +19,7 @@
     <br>
     <%= f.input :photo, as: :file %>
     <br>
-    <!-- <div class="form-group">
-      <label class="control-label check_boxes optional">Categories</label>
-      <div class="category-choices">
-        <%# Category.all.each do |category| %>
-        <input type="checkbox" class="hidden" value="<%#= category.id %>" name="activity[category_ids][]" id="activity_category_ids_<%#= category.id %>">
-        <label for="acitivity_category_ids_<%#= category.id %>">
-          <%#= category.name %>
-          <i class="fa fa-check"></i>
-        </label>
-        <%# end %>
-      </div>
-    </div> -->
-<!--
-    <select class="form-control" multiple="multiple">
-      <option selected="selected">orange</option>
-      <option>white</option>
-      <option selected="selected">purple</option>
-    </select>
- -->
+
     <div class="form-group">
       <select class="select2" multiple="multiple" name="activity[category_ids][]" style="width: 75 %">
         <% Category.all.each do |category| %>
@@ -43,59 +28,7 @@
       </select>
     </div>
   </div>
-
-
-
-<!-- <select id="example" style="width: 300px">
-  <option value="JAN">January</option>
-  <option value="FEB">February</option>
-  <option value="MAR">March</option>
-  <option value="APR">April</option>
-  <option value="MAY">May</option>
-  <option value="JUN">June</option>
-  <option value="JUL">July</option>
-  <option value="AUG">August</option>
-  <option value="SEP">September</option>
-  <option value="OCT">October</option>
-  <option value="NOV">November</option>
-  <option value="DEC">December</option>
-</select> -->
-
-   <!--    <select class="form-control" multiple="multiple">
-  <option selected="selected">orange</option>
-  <option>white</option>
-  <option selected="selected">purple</option>
-</select> -->
-<!--  </label> -->
-      <!-- <ul class="select2-selection__rendered" id="select2-id_label_multiple-container">
-        <li class="select2-selection__choice" title="Hawaii" data-select2-id="select2-data-153-hag3">
-          <button type="button" class="select2-selection__choice__remove" tabindex="-1" title="Remove item" aria-label="Remove item" aria-describedby="select2-id_label_multiple-container-choice-08zd-HI">
-            <span aria-hidden="true">×</span>
-          </button>
-          <span class="select2-selection__choice__display" id="select2-id_label_multiple-container-choice-08zd-HI">Hawaii</span>
-        </li>
-        <li class="select2-selection__choice" title="California" data-select2-id="select2-data-154-kb0j">
-          <button type="button" class="select2-selection__choice__remove" tabindex="-1" title="Remove item" aria-label="Remove item" aria-describedby="select2-id_label_multiple-container-choice-62z1-CA">
-            <span aria-hidden="true">×</span>
-          </button>
-          <span class="select2-selection__choice__display" id="select2-id_label_multiple-container-choice-62z1-CA">California</span>
-        </li>
-      </ul> -->
-      <br>
-
-<!--  <div class="container">
-    <div class="row">
-      <div class="col-xs-12 col-md-8 col-md-offset-2">
-        <h1>Add new tag for <%#= @activity.name %></h1>
-
-        <%#= simple_form_for [@activity] do |f| %>
-        <%#= f.input :category_ids, collection: Category.all, input_html: { multiple: true, class: 'multiple-select' }, include_hidden: false %>
-        <%#= f.submit "Add tag", class: 'btn btn-primary' %>
-        <%# end %>
-      </div>
-    </div>
-  </div> -->
-
+  <br>
 
   <div class="form-actions">
     <%= f.button :submit, { class: "btn btn-primary" } %>
