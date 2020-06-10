@@ -1,12 +1,13 @@
 <!-- This is the banner part -->
 
+
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1526309206584-51dc789367bd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80);">
+
+
   <div class="container d-flex justify-content-around">
     <div>
-
       <h1><%= @location %></h1>
       <%= simple_form_for :search, url: activities_path, method: :get do |f| %>
-
       <div class="form-row w-5 m-5">
         <div class="col">
           <%= f.input :location, input_html: {value: @location.try(:capitalize), class: "form-control address-input"}, placeholder: "Location", label: false  %>
@@ -24,33 +25,20 @@
           <%= f.submit "Search", class: "btn btn-primary" %>
         </div>
       </div>
-
       <% end %>
     </div>
   </div>
 </div>
-
-<!-- This is the map -->
-<div class="container flex-container d-flex mt-5 mb-5">
-  <div id="map"
-       style="width: 1000px; height: 500px;"
-       data-markers="<%= @markers.to_json %>"
-       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-  </div>
-</div>
-
 <!-- This are the cards -->
-<br>
-  <div class="container flex-container d-flex mt-5 mb-5">
-    <div class="cards">
-      <% @activities.each do |activity| %>
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-8" >
+      <div style="display: flex">
+        <% @activities.each do |activity| %>
 
-      <div class="container card-trip">
-        <% if activity.photo.attached? %>
-        <%= cl_image_tag activity.photo.key, height: 300, width: 400, crop: :fill %>
-        <% else %>
-        <%= image_tag 'travel_1.jpg', class: 'activity-image' %>
+            <%= render 'shared/card', activity: activity%>
         <% end %>
+
 
         <div class="card-trip-infos">
           <div>
@@ -130,10 +118,20 @@
 
 
           </div>
-        </div>
 
+      </div>
+      <!-- </div> -->
     </div>
-    <% end %>
+      <!-- This is the map -->
+    <div class="col-12 col-md-4" style='background: red'>
+      <!-- <div class="container flex-container d-flex mt-5 mb-5"> -->
+        <div id="map"
+             style="width: 100%; height: 500px;"
+             data-markers="<%= @markers.to_json %>"
+             data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+
+        </div>
+      <!-- </div> -->
+    </div>
   </div>
 </div>
-
