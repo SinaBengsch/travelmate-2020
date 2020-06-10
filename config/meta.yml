@@ -1,4 +1,4 @@
 meta_product_name: "travelm8"
 meta_title: "travelm8 - Find your travel mate"
 meta_description: "You are planning a trip but are still looking for people to join you. This app will help you to find a mate to travel with."
-meta_image: "banner1.jpg" # should exist in `app/assets/images/`
+meta_image: "og-image.jpg" # should exist in `app/assets/images/`
