@@ -17,7 +17,7 @@
     <br>
 
     <div class="form-group">
-      <select class="select2" multiple="multiple" name="activity[category_ids][]" style="width: 75 %">
+      <select class="select2" multiple="multiple" name="activity[category_ids][]" style="width: 50 %">
         <% Category.all.each do |category| %>
           <option value="<%= category.id %>"><%= category.name %></option>
           <% end %>

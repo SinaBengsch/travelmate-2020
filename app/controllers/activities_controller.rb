@@ -7,7 +7,8 @@ class ActivitiesController < ApplicationController
     # @categories = Category.all
     if params[:search].present?
       if params[:search][:location].present?
-        @activities = Activity.geocoded
+        @activities = @activities.geocoded
+
         @activities = @activities.where("address ILIKE ?", "%#{params[:search][:location]}%")
       end
 
@@ -19,16 +20,18 @@ class ActivitiesController < ApplicationController
         @activities = @activities.where("end_date <= ?", params[:search][:end_date])
       end
 
-      # if params[:search][:category].present?
-      #   activity = Activity.find
-        # category = Category.find(params[:search][:category].to_i)[:name]
-      # @activities = @activities.where(category)
-      @markers = @activities.map do |activity|
-        {
-          lat: activity.latitude,
-          lng: activity.longitude,
-          infoWindow: render_to_string(partial: "activities/map_box", locals: { activity: activity })
-        }
+      if params[:search][:category].present? && params[:search][:category].last != ""
+        params[:search][:category].shift
+        category = Category.find(params[:search][:category].first.to_i)
+        @activities = @activities.where(categories: category)
+        @markers = @activities.map do |activity|
+          {
+            lat: activity.latitude,
+            lng: activity.longitude,
+            infoWindow: render_to_string(partial: "activities/map_box", locals: { activity: activity })
+          }
+        end
+
       end
 
     else
