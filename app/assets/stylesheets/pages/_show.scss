@@ -57,6 +57,7 @@ position: relative;
     border-bottom: 1px solid #dee2e6;
     border-top-left-radius: 1px;
     border-top-right-radius: 1px;
+    padding-bottom: 15px;
 }
 .modal-footer {
 padding-right: 50px;
@@ -99,7 +100,8 @@ padding-top: 30px;
 }
 
 .card-trip {
-  min-width:300px;
+  min-width:230px;
+  width:230px;
    overflow: hidden;
    background: white;
    box-shadow: 0 0 15px rgba(0,0,0,0.2);
@@ -120,7 +122,9 @@ padding-top: 30px;
 .cards {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 15px;
+  grid-gap: 10px;
+  // display: flex;
+  // flex-wrap: wrap;
 }
 
 // Smallest device
@@ -184,6 +188,8 @@ padding-top: 30px;
 
   #map{
     box-shadow: 0 0 5px rgba(0,0,0,0.5);
+    position: sticky;
+    top: 100px;
   }
 
 // background: #FFFFFF;
