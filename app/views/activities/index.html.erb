@@ -32,11 +32,11 @@
 
 <!-- This is the map -->
 <div class="container flex-container d-flex mt-5 mb-5">
-<div id="map"
-     style="width: 1000px; height: 500px;"
-     data-markers="<%= @markers.to_json %>"
-     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-</div>
+  <div id="map"
+       style="width: 1000px; height: 500px;"
+       data-markers="<%= @markers.to_json %>"
+       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
 </div>
 
 <!-- This are the cards -->
@@ -79,28 +79,14 @@
                     </div>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
-                      </button>
-
+                    </button>
                   </div>
 
                   <div class="modal-body">
                     <div class="insert-image">
-                      <%#= cl_image_tag activity.photo.key, height: 110, width: 420, crop: :fill %>
+                      <%= cl_image_tag activity.photo.key, height: 110, width: 420, crop: :fill %>
                     </div>
-
-                    <div class="modal-body">
-                      <div class="insert-image">
-                        <%#= cl_image_tag activity.photo.key, height: 110, width: 420, crop: :fill %>
-                      </div>
                       <p class="left-even"><p><strong>About:</strong> <%= activity.description %></p></p>
-                    </div>
-
-                    <div class="modal-footer">
-                      <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
-                      <%= link_to 'Profile', profile_path(activity.user), { class: "btn btn-primary" } %>
-
-                    </div>
-                    <p class="left-even"><p><strong>About:</strong> <%= activity.description %></p></p>
                   </div>
 
                   <div class="modal-footer">
@@ -108,19 +94,17 @@
                     <%= link_to 'Profile', profile_path(activity.user), { class: "btn btn-primary" } %>
                   </div>
                 </div>
-
               </div>
             </div>
 
             <!-- Outside of Modal -->
-
             <div class="moving-activity-name">
               <h2 class="card-activity-name"><td> <%= link_to activity.name, activity %></td></h2>
             </div>
             <div class="moving-activity-address">
               <p class="left-even"><td><%= activity.address %></td></p>
             </div>
-          </div>
+          <!-- </div> -->
 
           <p class="card-activity-timing"><%= activity.start_date %> until <%= activity.end_date %></p>
 
@@ -136,10 +120,10 @@
               <!-- <img src="https://res.cloudinary.com/detomqnqx/image/upload/v1591364375/photo_xbevd5.gif" class="card-trip-user avatar-bordered" /> -->
             </div>
 
-        
+
           </div>
         </div>
-      </div>
+
     </div>
     <% end %>
   </div>
