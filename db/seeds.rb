@@ -11,6 +11,14 @@ User.destroy_all # if Rails.env.development?
 puts 'Delete data from database...'
 
 # All users
+file_avatar_test = URI.open('https://res.cloudinary.com/detomqnqx/image/upload/v1591294685/hawaii-surfing_weni1i.jpg')
+
+file1a = URI.open('https://res.cloudinary.com/detomqnqx/image/upload/v1591294685/hawaii-surfing_weni1i.jpg')
+file2a = URI.open('https://res.cloudinary.com/detomqnqx/image/upload/v1591294681/hawaii-vulcano_buom1a.jpg')
+file3a = URI.open('https://res.cloudinary.com/detomqnqx/image/upload/v1591294682/hawaii-pearl-harbor_mk6l4r.jpg')
+file4a = URI.open('https://res.cloudinary.com/detomqnqx/image/upload/v1591294683/paris-eiffel_n5lrme.jpg')
+file5a = URI.open('https://res.cloudinary.com/detomqnqx/image/upload/v1591294685/paris-louvre_rguguo.jpg')
+file6a = URI.open('https://res.cloudinary.com/detomqnqx/image/upload/v1591294674/bali-snorkeling_ahn9lf.jpg')
 
 user1 = User.create!(
   email: "benny@email.com",
@@ -21,6 +29,7 @@ user1 = User.create!(
   language: "German",
   description: "I love spending all my free time outside in the nature. Surfing, Hiking, Running...You name it and I am in."
 )
+user1.photo.attach(io: file1a, filename: 'photo')
 
 user2 = User.create(
   email: "dan@email.com",
@@ -31,6 +40,7 @@ user2 = User.create(
   language: "English",
   description: "I love to discover places all over the world and meet cool people to share those special moments."
 )
+user2.photo.attach(io: file2a, filename: 'photo')
 
 user3 = User.create(
   email: "rachelb@email.com",
@@ -41,6 +51,7 @@ user3 = User.create(
   language: "English",
   description: "My passion is to take photos while travelling. My favourite city is Paris. I've been there literally 100 times and go back there every year at least once. The Louvre and Eiffel Tower I visited a couple of times already but I always go back there."
 )
+user3.photo.attach(io: file3a, filename: 'photo')
 
 user4 = User.create(
   email: "jon@email.com",
@@ -51,6 +62,7 @@ user4 = User.create(
   language: "English",
   description: "I plan a backpacking trip around the world and want to visit 10 countries in 3 month. Iceland, France, Germany, Vietnam, Thailand...I am a big fan of hiking but don't mind a little sightseeing."
 )
+user4.photo.attach(io: file4a, filename: 'photo')
 
 user5 = User.create(
   email: "chan@email.com",
@@ -61,6 +73,7 @@ user5 = User.create(
   language: "English",
   description: "I love traveling would do that all year long if possible."
 )
+user5.photo.attach(io: file5a, filename: 'photo')
 
 user6 = User.create(
   email: "loa@email.com",
@@ -71,6 +84,7 @@ user6 = User.create(
   language: "English",
   description: "Can't wait for my next semester break to go traveling again. Currently looking for the next location where I can go surfing."
 )
+user6.photo.attach(io: file6a, filename: 'photo')
 
 user7demo = User.create(
   email: "philipp@email.com",
@@ -81,7 +95,7 @@ user7demo = User.create(
   language: "German",
   description: "Love traveling."
 )
-
+user7demo.photo.attach(io: file_avatar_test, filename: 'photo')
 # setting up cloudinary pictures
 
 file1 = URI.open('https://res.cloudinary.com/detomqnqx/image/upload/v1591294685/hawaii-surfing_weni1i.jpg')
