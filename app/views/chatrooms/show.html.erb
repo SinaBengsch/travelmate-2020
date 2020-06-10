@@ -1,0 +1,14 @@
+<h1>#<%= @chatroom.activity.name %></h1>
+<div id="messages" data-chatroom-id="<%= @chatroom.id %>">
+  <% @chatroom.messages.each do |message| %>
+    <%= render 'messages/message', message: message %>
+  <% end %>
+</div>
+
+
+<%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
+  <%= f.input :content, label: false, placeholder: "Message ##{@chatroom.activity.name}" %>
+<% end %>
+
+
+<%= link_to "go back to activity", activity_path(@chatroom.activity) %>
