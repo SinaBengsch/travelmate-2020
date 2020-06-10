@@ -42,6 +42,7 @@
             </div>
             <div class="modal-footer">
               <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+              <%= link_to 'Message', profile_path(activity.user), { class: "btn btn-primary" } %>
               <%= link_to 'Profile', profile_path(activity.user), { class: "btn btn-primary" } %>
             </div>
           </div>
