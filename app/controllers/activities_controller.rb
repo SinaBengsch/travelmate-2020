@@ -20,8 +20,8 @@ class ActivitiesController < ApplicationController
       end
 
       if params[:search][:category].present?
-        activity = Activity.find
-        category = Category.find(params[:search][:category].to_i)[:name]
+        # activity = Activity.find
+        category = Category.find(params[:search][:category].last.to_i)[:name]
         @activities = @activities.where(category)
         @markers = @activities.map do |activity|
           {
