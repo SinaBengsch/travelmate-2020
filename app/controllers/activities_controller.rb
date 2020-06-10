@@ -30,9 +30,6 @@ class ActivitiesController < ApplicationController
           infoWindow: render_to_string(partial: "activities/map_box", locals: { activity: activity })
         }
       end
-
-    else
-      @activities = Activity.all
     end
   end
 
