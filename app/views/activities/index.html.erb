@@ -3,12 +3,13 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/hawaii);">
   <div class="container d-flex justify-content-around">
     <div>
-      <h1><%= params[:search][:location].upcase %></h1>
+
+      <h1><%= @location %></h1>
       <%= simple_form_for :search, url: activities_path, method: :get do |f| %>
 
-      <div class="form-row m-5">
+      <div class="form-row w-5 m-5">
         <div class="col">
-          <%= f.input :location, input_html: {value: params[:search][:location].capitalize, class: "form-control address-input"}, placeholder: "Location", label: false  %>
+          <%= f.input :location, input_html: {value: @location.try(:capitalize), class: "form-control address-input"}, placeholder: "Location", label: false  %>
         </div>
         <div class="col">
           <%= f.input :start_date, placeholder: "Start Date", as: :string, input_html: {id: "range_start"}, label: false, class: "form-control" %>
@@ -17,16 +18,17 @@
           <%= f.input :end_date, placeholder: "End Date", as: :string, input_html: {id: "range_end"}, label: false, class: "form-control" %>
         </div>
         <div class="col">
-          <%= f.input :category, collection: @categories, placeholder: "Categories", label: false%>
-          </div>
-          <div class="col">
-            <%= f.submit "Search", class:"btn btn-primary"%>
-          </div>
+          <%= f.input :category, collection: @categories, placeholder: "Categories", input_html: { multiple: true, class: "selectpicker"}, label: false %>
         </div>
-        <% end %>
+        <div class="col-w-5">
+          <%= f.submit "Search", class: "btn btn-primary" %>
+        </div>
       </div>
+
+      <% end %>
     </div>
   </div>
+</div>
 
 <!-- This is the map -->
 <div class="container flex-container d-flex mt-5 mb-5">
@@ -39,7 +41,6 @@
 
 <!-- This are the cards -->
 <br>
-
   <div class="container flex-container d-flex mt-5 mb-5">
     <div class="cards">
       <% @activities.each do |activity| %>
@@ -66,7 +67,7 @@
 
                   <div class="modal-header">
 
-                      <%= cl_image_tag activity.user.photo.key, height: 50, width: 50, crop: :fill, class: "card-trip-user avatar-bordered" %>
+                    <%#= cl_image_tag activity.user.photo.key, height: 50, width: 50, crop: :fill, class: "card-trip-user avatar-bordered" %>
 
                     <!-- <img src="https://res.cloudinary.com/detomqnqx/image/upload/v1591364375/photo_xbevd5.gif" class="card-activity-user avatar-bordered" /> -->
                     <%#= image_tag 'travel_1.jpg', class: 'activity-image' %>
@@ -79,6 +80,7 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                       </button>
+
                   </div>
 
                   <div class="modal-body">
@@ -96,11 +98,19 @@
                     <div class="modal-footer">
                       <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
                       <%= link_to 'Profile', profile_path(activity.user), { class: "btn btn-primary" } %>
+
                     </div>
+                    <p class="left-even"><p><strong>About:</strong> <%= activity.description %></p></p>
                   </div>
 
+                  <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+                    <%= link_to 'Profile', profile_path(activity.user), { class: "btn btn-primary" } %>
+                  </div>
                 </div>
+
               </div>
+            </div>
 
             <!-- Outside of Modal -->
 
@@ -110,9 +120,9 @@
             <div class="moving-activity-address">
               <p class="left-even"><td><%= activity.address %></td></p>
             </div>
-            </div>
+          </div>
 
-            <p class="card-activity-timing"><%= activity.start_date %> until <%= activity.end_date %></p>
+          <p class="card-activity-timing"><%= activity.start_date %> until <%= activity.end_date %></p>
 
             <div class="moving-avatar">
               <% if activity.user.photo.attached? %>
@@ -125,10 +135,13 @@
               <% end %>
               <!-- <img src="https://res.cloudinary.com/detomqnqx/image/upload/v1591364375/photo_xbevd5.gif" class="card-trip-user avatar-bordered" /> -->
             </div>
+
+        
           </div>
         </div>
       </div>
-      <% end %>
     </div>
+    <% end %>
   </div>
+</div>
 

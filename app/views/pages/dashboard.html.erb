@@ -5,54 +5,66 @@
       <h2>My activities</h2>
       <hr>
       <br>
-        <% current_user.activities.each do |activity|%>
-        <div class="card-dashboard-activity">
-          <div class="d-flex align-items-center">
+      <% current_user.activities.each do |activity|%>
+      <div class="card-dashboard-activity">
+        <div class="d-flex align-items-center">
+          <div>
+            <% if activity.photo.attached? %>
+            <%= cl_image_tag activity.photo.key, height: 200, width: 150, crop: :fill %>
+            <% else %>
+            <%= image_tag 'travel_1.jpg', height: 200, width: 150, crop: :fill%>
+            <% end %>
+          </div>
+          <div class="card-dashboard-description">
             <div>
-              <% if activity.photo.attached? %>
-                <%= cl_image_tag activity.photo.key, height: 200, width: 150, crop: :fill %>
-              <% else %>
-                <%= image_tag 'travel_1.jpg', height: 200, width: 150, crop: :fill%>
-              <% end %>
-            </div>
-            <div class="card-dashboard-description">
+              <h4><%= activity.name %></h4>
+              <p><%= activity.address %></p>
+              <p><%= activity.start_date %> – <%= activity.end_date %></p>
+              <%= link_to 'show', activity_path(activity), { class: "btn btn-primary" } %>
               <div>
-                <h4><%= activity.name %></h4>
-                <p><%= activity.address %></p>
-                <p><%= activity.start_date %> – <%= activity.end_date %></p>
-                <%= link_to 'show', activity_path(activity), { class: "btn btn-primary" } %>
+                <% activity.categories.each do |category| %>
+                <%= category.name %>
+                <% end %>
               </div>
             </div>
           </div>
         </div>
-        <br>
-        <% end %>
+      </div>
+
+      <br>
+      <% end %>
       <br>
 
       <h2>Bookmarked activities</h2>
       <hr>
       <br>
       <% current_user.bookmarks.each do |bookmark|  %>
-        <div class="card-dashboard-activity">
-          <div class="d-flex align-items-center">
+      <div class="card-dashboard-activity">
+        <div class="d-flex align-items-center">
+          <div>
+            <% if bookmark.activity.photo.attached? %>
+            <%= cl_image_tag bookmark.activity.photo.key, height: 200, width: 150, crop: :fill %>
+            <% else %>
+            <%= image_tag 'travel_1.jpg', height: 200, width: 150, crop: :fill%>
+            <% end %>
+          </div>
+          <div class="card-dashboard-description">
             <div>
-              <% if bookmark.activity.photo.attached? %>
-                <%= cl_image_tag bookmark.activity.photo.key, height: 200, width: 150, crop: :fill %>
-              <% else %>
-                <%= image_tag 'travel_1.jpg', height: 200, width: 150, crop: :fill%>
-              <% end %>
-            </div>
-            <div class="card-dashboard-description">
+              <h4><%= bookmark.activity.name %></h4>
+              <p><%= bookmark.activity.address %></p>
+              <p><%= bookmark.activity.start_date %> – <%= bookmark.activity.end_date %></p>
               <div>
-                <h4><%= bookmark.activity.name %></h4>
-                <p><%= bookmark.activity.address %></p>
-                <p><%= bookmark.activity.start_date %> – <%= bookmark.activity.end_date %></p>
-                <img src="https://res.cloudinary.com/detomqnqx/image/upload/v1591365485/creepy_dan_v0t1mx.png" class="avatar-bordered" />
-                <!-- bookmark -->
-                </div>
+                <% bookmark.activity.categories.each do |category| %>
+                <%= category.name %>
+                <% end %>
+              </div>
+              <img src="https://res.cloudinary.com/detomqnqx/image/upload/v1591365485/creepy_dan_v0t1mx.png" class="avatar-bordered" />
+              <!-- bookmark -->
+              <%= link_to '<i class="fas fa-bookmark"></i>'.html_safe, bookmark_path(bookmark), method: :delete, data: {confirm: "Are your sure you want to remove this bookmark?"} %>
             </div>
           </div>
         </div>
+      </div>
       <% end %>
 
     </div>

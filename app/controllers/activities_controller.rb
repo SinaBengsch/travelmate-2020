@@ -2,6 +2,7 @@ class ActivitiesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
+    @location = params[:search][:location].try(:upcase) if params[:search]
     @activities = Activity.all
     # @categories = Category.all
     if params[:search].present?
@@ -17,7 +18,7 @@ class ActivitiesController < ApplicationController
       if params[:search][:end_date].present?
         @activities = @activities.where("end_date <= ?", params[:search][:end_date])
       end
-
+      
       # if params[:search][:category].present?
       #   activity = Activity.find
         # category = Category.find(params[:search][:category].to_i)[:name]
@@ -61,6 +62,15 @@ class ActivitiesController < ApplicationController
   private
 
   def activities_params
-    params.require(:activity).permit(:name, :description, :address, :start_date, :end_date, :photo)
+    params.require(:activity)
+    .permit(
+      :name,
+      :description,
+      :address,
+      :start_date,
+      :end_date,
+      :photo,
+      { category_ids: [] }
+      )
   end
 end
