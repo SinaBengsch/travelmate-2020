@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_09_095917) do
+ActiveRecord::Schema.define(version: 2020_06_08_160447) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,11 @@ ActiveRecord::Schema.define(version: 2020_06_09_095917) do
     t.index ["user_id"], name: "index_activities_on_user_id"
   end
 
+  create_table "activities_categories", id: false, force: :cascade do |t|
+    t.bigint "activity_id", null: false
+    t.bigint "category_id", null: false
+  end
+
   create_table "activity_categories", force: :cascade do |t|
     t.bigint "activity_id"
     t.bigint "category_id", null: false
@@ -70,24 +75,6 @@ ActiveRecord::Schema.define(version: 2020_06_09_095917) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
-  end
-
-  create_table "chat_rooms", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.bigint "activity_id", null: false
-    t.index ["activity_id"], name: "index_chat_rooms_on_activity_id"
-  end
-
-  create_table "messages", force: :cascade do |t|
-    t.string "content"
-    t.bigint "user_id", null: false
-    t.bigint "chat_room_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["chat_room_id"], name: "index_messages_on_chat_room_id"
-    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "taggings", id: :serial, force: :cascade do |t|
@@ -140,8 +127,5 @@ ActiveRecord::Schema.define(version: 2020_06_09_095917) do
   add_foreign_key "activity_categories", "categories"
   add_foreign_key "bookmarks", "activities"
   add_foreign_key "bookmarks", "users"
-  add_foreign_key "chat_rooms", "activities"
-  add_foreign_key "messages", "chat_rooms"
-  add_foreign_key "messages", "users"
   add_foreign_key "taggings", "tags"
 end

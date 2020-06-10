@@ -12,13 +12,4 @@ class Activity < ApplicationRecord
   validates :address, presence: true
   validates :start_date, presence: true
   validates :end_date, presence: true
-  # acts_as_taggable_on :categories
-  after_save :create_chat_room
-  has_many :chat_rooms
-
-  def create_chat_room
-    @chat_room = ChatRoom.new(name: name)
-    @chat_room.activity = self
-    @chat_room.save
-  end
 end
