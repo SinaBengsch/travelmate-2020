@@ -4,10 +4,11 @@ class ActivitiesController < ApplicationController
   def index
     @location = params[:search][:location].try(:upcase) if params[:search]
     @activities = Activity.all
-    @categories = Category.all
+    # @categories = Category.all
     if params[:search].present?
       if params[:search][:location].present?
         @activities = @activities.geocoded
+
         @activities = @activities.where("address ILIKE ?", "%#{params[:search][:location]}%")
       end
 
@@ -30,6 +31,7 @@ class ActivitiesController < ApplicationController
             infoWindow: render_to_string(partial: "activities/map_box", locals: { activity: activity })
           }
         end
+
       end
 
     else
