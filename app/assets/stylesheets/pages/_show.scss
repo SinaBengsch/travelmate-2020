@@ -162,9 +162,9 @@ padding-top: 30px;
 
     }
 
-  .image-brightness{
-filter: brightness(70%);
-    }
+.image-brightness{
+  filter: brightness(70%);
+}
   .insert-image{
       box-shadow: 0 0 5px rgba(0,0,0,0.5);
       margin-bottom: 5px;
@@ -180,6 +180,11 @@ filter: brightness(70%);
       bottom:18px;
 
     }
+
+  #map{
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+  }
+
 // background: #FFFFFF;
 // mix-blend-mode: normal;
 // border: 3px solid #71DCEB;

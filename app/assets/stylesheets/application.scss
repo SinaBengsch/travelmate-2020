@@ -9,6 +9,7 @@
 @import "font-awesome";
 @import 'select2/dist/css/select2';
 @import 'mapbox-gl/dist/mapbox-gl';
+@import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder';
 
 
 // Your CSS partials
@@ -18,3 +19,5 @@
 // *= require bootstrap-datepicker
 @import "flatpickr/dist/flatpickr";
 @import "flatpickr/dist/themes/airbnb";
+
+// @import 'bootstrap-select';

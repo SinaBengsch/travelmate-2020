@@ -3,12 +3,13 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1526309206584-51dc789367bd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80);">
   <div class="container d-flex justify-content-around">
     <div>
-      <h1><%= params[:search][:location].upcase %></h1>
+
+      <h1><%= @location %></h1>
       <%= simple_form_for :search, url: activities_path, method: :get do |f| %>
 
-      <div class="form-row m-5">
+      <div class="form-row w-5 m-5">
         <div class="col">
-          <%= f.input :location, input_html: {value: params[:search][:location].capitalize, class: "form-control address-input"}, placeholder: "Location", label: false  %>
+          <%= f.input :location, input_html: {value: @location.try(:capitalize), class: "form-control address-input"}, placeholder: "Location", label: false  %>
         </div>
         <div class="col">
           <%= f.input :start_date, placeholder: "Start Date", as: :string, input_html: {id: "range_start"}, label: false, class: "form-control" %>
@@ -17,29 +18,29 @@
           <%= f.input :end_date, placeholder: "End Date", as: :string, input_html: {id: "range_end"}, label: false, class: "form-control" %>
         </div>
         <div class="col">
-          <%= f.input :category, collection: @categories, placeholder: "Categories", label: false%>
-          </div>
-          <div class="col">
-            <%= f.submit "Search", class:"btn btn-primary"%>
-          </div>
+          <%= f.input :category, collection: @categories, placeholder: "Categories", input_html: { multiple: true, class: "selectpicker"}, label: false %>
         </div>
-        <% end %>
+        <div class="col-w-5">
+          <%= f.submit "Search", class: "btn btn-primary" %>
+        </div>
       </div>
+
+      <% end %>
     </div>
   </div>
-
-<!-- This is the map -->
-
-<div id="map"
-     style="width: 100%; height: 600px;"
-     data-markers="<%= @markers.to_json %>"
-     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
 </div>
 
+<!-- This is the map -->
+<div class="container flex-container d-flex mt-5 mb-5">
+  <div id="map"
+       style="width: 1000px; height: 500px;"
+       data-markers="<%= @markers.to_json %>"
+       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
+</div>
 
 <!-- This are the cards -->
 <br>
-
   <div class="container flex-container d-flex mt-5 mb-5">
     <div class="cards">
       <% @activities.each do |activity| %>
@@ -65,25 +66,26 @@
                 <div class="modal-content">
 
                   <div class="modal-header">
-                    <img src="https://res.cloudinary.com/detomqnqx/image/upload/v1591364375/photo_xbevd5.gif" class="card-activity-user avatar-bordered" />
+
+                    <%#= cl_image_tag activity.user.photo.key, height: 50, width: 50, crop: :fill, class: "card-trip-user avatar-bordered" %>
+
+                    <!-- <img src="https://res.cloudinary.com/detomqnqx/image/upload/v1591364375/photo_xbevd5.gif" class="card-activity-user avatar-bordered" /> -->
+                    <%#= image_tag 'travel_1.jpg', class: 'activity-image' %>
+
+
                     <div class="inline">
                       <h5 class="modal-title" id="exampleModalLongTitle"><%= activity.name %></h5>
                       <td><p class="left-even" id="address-showpage"><%= activity.address %></p><h2 class="card-activity-timing"><%= activity.start_date %> until <%= activity.end_date %></h2></td>
                     </div>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
-                      </button>
+                    </button>
                   </div>
 
                   <div class="modal-body">
                     <div class="insert-image">
-                      <%#= cl_image_tag activity.photo.key, height: 110, width: 420, crop: :fill %>
+                      <%= cl_image_tag activity.photo.key, height: 110, width: 420, crop: :fill %>
                     </div>
-
-                    <div class="modal-body">
-                      <div class="insert-image">
-                        <%= cl_image_tag activity.photo.key, height: 110, width: 420, crop: :fill %>
-                      </div>
                       <p class="left-even"><p><strong>About:</strong> <%= activity.description %></p></p>
                     </div>
 
@@ -92,30 +94,46 @@
                       <%= link_to 'Profile', profile_path(activity.user), { class: "btn btn-primary" } %>
                       <%= link_to 'Chat', chat_room_path(activity.chat_rooms.first), { class: "btn btn-primary" } %>
                     </div>
+
                   </div>
 
+                  <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+                    <%= link_to 'Profile', profile_path(activity.user), { class: "btn btn-primary" } %>
+                  </div>
                 </div>
               </div>
+            </div>
 
             <!-- Outside of Modal -->
-
             <div class="moving-activity-name">
               <h2 class="card-activity-name"><td> <%= link_to activity.name, activity %></td></h2>
             </div>
             <div class="moving-activity-address">
               <p class="left-even"><td><%= activity.address %></td></p>
             </div>
-            </div>
+          <!-- </div> -->
 
-            <p class="card-activity-timing"><%= activity.start_date %> until <%= activity.end_date %></p>
+          <p class="card-activity-timing"><%= activity.start_date %> until <%= activity.end_date %></p>
 
             <div class="moving-avatar">
-              <img src="https://res.cloudinary.com/detomqnqx/image/upload/v1591364375/photo_xbevd5.gif" class="card-trip-user avatar-bordered" />
+              <% if activity.user.photo.attached? %>
+                <div >
+                  <%= cl_image_tag activity.user.photo.key, height: 50, width: 50, crop: :fill, class: "card-trip-user avatar-bordered" %>
+                </div>
+              <% else %>
+                <img src="https://res.cloudinary.com/detomqnqx/image/upload/v1591364375/photo_xbevd5.gif" class="card-activity-user avatar-bordered" /> -->
+                <%#= image_tag 'travel_1.jpg', class: 'activity-image' %>
+              <% end %>
+              <!-- <img src="https://res.cloudinary.com/detomqnqx/image/upload/v1591364375/photo_xbevd5.gif" class="card-trip-user avatar-bordered" /> -->
             </div>
+
+
           </div>
         </div>
-      </div>
-      <% end %>
+
     </div>
+    <% end %>
   </div>
+</div>
 
