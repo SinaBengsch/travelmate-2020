@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
 
+  mount ActionCable.server => '/cable'
+
   get 'pages/home'
   get '/tagged', to: "activities#tagged", as: :tagged
   get 'dashboard', to: 'pages#dashboard', as: :dashboard
