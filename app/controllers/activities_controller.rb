@@ -39,6 +39,7 @@ class ActivitiesController < ApplicationController
     end
   end
 
+
   def show
     @activity = Activity.find(params[:id])
     if current_user.bookmarks.find_by(activity: @activity).nil?
