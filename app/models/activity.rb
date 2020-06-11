@@ -14,4 +14,12 @@ class Activity < ApplicationRecord
   validates :end_date, presence: true
 
   has_one :chatroom
+
+  def has_bookmark?(user)
+    self.bookmarks.where(user: user).present?
+  end
+
+  def fetch_bookmark(user)
+    self.bookmarks.where(user: user).first
+  end
 end
