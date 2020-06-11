@@ -15,7 +15,7 @@
           <%= f.input :end_date, placeholder: "End Date", as: :string, input_html: {id: "range_end"}, label: false, class: "form-control" %>
         </div>
         <div class="col">
-          <%= f.input :category, collection: @categories, placeholder: "Categories", input_html: { multiple: true, class: "selectpicker"}, label: false %>
+          <%= f.input :category, collection: @categories, placeholder: "Categories", label: false %>
         </div>
         <div class="col-w-5">
           <%= f.submit "Search", class: "btn btn-primary" %>
