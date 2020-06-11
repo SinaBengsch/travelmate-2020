@@ -1,11 +1,14 @@
 <div class="container card-trip" style="margin-bottom: 15px;">
+
   <% if activity.photo.attached? %>
   <%= cl_image_tag activity.photo.key, height: 300, width: 400, crop: :fill %>
   <% else %>
   <%= image_tag 'travel_1.jpg', class: 'activity-image' %>
   <% end %>
+
   <div class="card-trip-infos">
     <div>
+
       <!-- Button trigger modal -->
       <div class="button-margin">
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal_<%= activity.id %>">
@@ -17,10 +20,13 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <%#= cl_image_tag activity.user.photo.key, height: 50, width: 50, crop: :fill, class: "card-trip-user avatar-bordered" %>
+
+              <%= cl_image_tag activity.user.photo.key, height: 50, width: 50, crop: :fill, class: "card-activity-user avatar-bordered" %>
               <!-- <img src="https://res.cloudinary.com/detomqnqx/image/upload/v1591364375/photo_xbevd5.gif" class="card-activity-user avatar-bordered" /> -->
               <%#= image_tag 'travel_1.jpg', class: 'activity-image' %>
+
               <div class="inline">
+
                 <h5 class="modal-title" id="exampleModalLongTitle"><%= activity.name %></h5>
                 <td><p class="left-even" id="address-showpage"><%= activity.address %></p><h2 class="card-activity-timing"><%= activity.start_date %> until <%= activity.end_date %></h2></td>
               </div>
@@ -36,6 +42,7 @@
             </div>
             <div class="modal-footer">
               <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+              <%= link_to 'Message', profile_path(activity.user), { class: "btn btn-primary" } %>
               <%= link_to 'Profile', profile_path(activity.user), { class: "btn btn-primary" } %>
             </div>
           </div>

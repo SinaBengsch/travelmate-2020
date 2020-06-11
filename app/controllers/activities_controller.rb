@@ -33,9 +33,6 @@ class ActivitiesController < ApplicationController
         end
 
       end
-
-    else
-      @activities = Activity.all
     end
   end
 
