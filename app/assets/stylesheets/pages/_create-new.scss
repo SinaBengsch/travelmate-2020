@@ -1,9 +1,9 @@
 .container-new {
   margin: 50px;
   border-radius: 8px;
+  width: 100%;
 }
 
-.form-bottom {
-  width: 100%;
-  background: hs1(0, 0%, 97%);
+.container .profile-container {
+  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2%);
 }
