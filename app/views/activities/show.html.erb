@@ -5,33 +5,36 @@
     <div class="cards-showpage">
       <div class="card-activity-showpage">
         <div class="card-activity-infos-showpage">
-
-          <% if @activity.photo.attached? %>
-            <%= cl_image_tag @activity.photo.key, height: 150, width: 200, crop: :fill %>
-          <% else %>
-            <%= image_tag 'travel_1.jpg', class: 'activity-image' %>
-          <% end %>
-
           <div>
             <% if @new_bookmark %>
-              <%= simple_form_for([@activity, @new_bookmark], remote: true) do |f|%>
-              <%= f.button :button do %><i class="far fa-bookmark"></i><% end %>
+            <%= simple_form_for([@activity, @new_bookmark], remote: true) do |f|%>
+            <%= f.button :button do %><i class="far fa-bookmark"></i><% end %>
             <% end %>
             <% elsif @bookmark %>
-              <%= link_to '<i class="fas fa-bookmark"></i>'.html_safe, bookmark_path(@bookmark), method: :delete, data: {confirm: "Are your sure you want to remove this bookmark?"} %>
+            <%= link_to '<i class="fas fa-bookmark"></i>'.html_safe, bookmark_path(@bookmark), method: :delete, data: {confirm: "Are your sure you want to remove this bookmark?"} %>
             <% end %>
             <h2 id="name-showpage"><td> <%= link_to @activity.name, @activity %></td></h2>
             <td><p class="left-even" id="address-showpage"><%= @activity.address %></p><h2 class="card-activity-timing"><%= @activity.start_date %> until <%= @activity.end_date %></h2></td>
-            <p class="left-even"><p><strong>About:</strong> <%= @activity.description %></p></p>
-            <% if @activity.chatroom %>
-              <%= link_to "go to chat", chatroom_path(@activity.chatroom) %>
-            <% else %>
-              <%= simple_form_for [@activity, @chatroom = Chatroom.new] do |f| %>
-                <%= f.submit %>
-              <% end %>
-            <% end %>
+            <br>
+            <p class="left-even"><p> <%= @activity.description %></p></p>
+            <br>
+            <div class="row">
+              <div class="col">
+                <%= link_to activities_path do %>
+                <div class="btn btn-primary"><i class="fa fa-arrow-left"></i> Activities</div>
+                <% end %>
+              </div>
+              <div class="col">
+                <% if @activity.chatroom %>
+                <%= link_to "Chat", chatroom_path(@activity.chatroom), { class: "btn btn-primary" } %>
+                <% else %>
+                <%= simple_form_for [@activity, @chatroom = Chatroom.new] do |f| %>
+                <%= f.button :submit, "Chat" %>
+                <% end %>
+                <% end %>
+              </div>
+            </div>
           </div>
-            <img src="https://res.cloudinary.com/detomqnqx/image/upload/v1591365485/creepy_dan_v0t1mx.png" class="card-activity-user avatar-bordered" />
         </div>
       </div>
     </div>
