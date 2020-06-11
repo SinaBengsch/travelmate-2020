@@ -44,7 +44,11 @@ document.addEventListener('turbolinks:load', () => {
 // import 'mapbox-gl/dist/mapbox-gl.css';
 
 
-
+$(document).ready(function(){
+  $(".category-choice").click(function(){
+    $(this).toggleClass("active");
+  });
+});
 
 // require("bootstrap-select")
 // require("bootstrap/alert")

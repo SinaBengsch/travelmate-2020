@@ -1,73 +1,75 @@
+<!-- Button trigger modal -->
+
+<div data-toggle="modal" data-target="#modal_<%= activity.id %>">
+  <div class="zoom">
+  <div class="container card-trip" style="margin-bottom: 15px;">
+    <% if activity.photo.attached? %>
+    <%= cl_image_tag activity.photo.key, height: 300, width: 400, crop: :fill %>
+    <% else %>
+    <%= image_tag 'travel_1.jpg', class: 'activity-image' %>
+    <% end %>
+    <div class="card-trip-infos">
+      <div>
+
+        <!-- Outside of Modal -->
+        <div class="moving-activity-name">
+          <h2 class="card-activity-name"><td> <%= link_to activity.name, activity %></td></h2>
+        </div>
+        <div class="moving-activity-address">
+          <p class="left-even"><td><%= activity.address %></td></p>
+        </div>
+      <!-- </div> -->
+      <p class="card-activity-timing"><%= activity.start_date.strftime('%b %d %Y') %> until <%= activity.end_date.strftime('%b %d %Y') %></p>
+        <div class="moving-avatar">
+          <% if activity.user.photo.attached? %>
+            <div >
+              <%= cl_image_tag activity.user.photo.key, height: 50, width: 50, crop: :fill, class: "card-trip-user avatar-bordered" %>
+            </div>
+          <% else %>
+            <img src="https://res.cloudinary.com/detomqnqx/image/upload/v1591364375/photo_xbevd5.gif" class="card-activity-user avatar-bordered" /> -->
+            <%#= image_tag 'travel_1.jpg', class: 'activity-image' %>
+          <% end %>
+          <!-- <img src="https://res.cloudinary.com/detomqnqx/image/upload/v1591364375/photo_xbevd5.gif" class="card-trip-user avatar-bordered" /> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
 <div class="container card-trip" style="margin-bottom: 15px;">
 
-  <% if activity.photo.attached? %>
-  <%= cl_image_tag activity.photo.key, height: 300, width: 400, crop: :fill %>
-  <% else %>
-  <%= image_tag 'travel_1.jpg', class: 'activity-image' %>
-  <% end %>
+        <div class="modal fade" id="modal_<%= activity.id %>" tabindex="-1" role="dialog" aria-labelledby="modal_<%= activity.id %>" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <%= cl_image_tag activity.user.photo.key, height: 60, width: 60, crop: :fill, class: "card-activity-user avatar-bordered" %>
+                <!-- <img src="https://res.cloudinary.com/detomqnqx/image/upload/v1591364375/photo_xbevd5.gif" class="card-activity-user avatar-bordered" /> -->
+                <%#= image_tag 'travel_1.jpg', class: 'activity-image' %>
 
-  <div class="card-trip-infos">
-    <div>
+                <div class="inline">
 
-      <!-- Button trigger modal -->
-      <div class="button-margin">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal_<%= activity.id %>">
-          Detail
-        </button>
-      </div>
-      <!-- Modal -->
-      <div class="modal fade" id="modal_<%= activity.id %>" tabindex="-1" role="dialog" aria-labelledby="modal_<%= activity.id %>" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-
-              <%= cl_image_tag activity.user.photo.key, height: 50, width: 50, crop: :fill, class: "card-activity-user avatar-bordered" %>
-              <!-- <img src="https://res.cloudinary.com/detomqnqx/image/upload/v1591364375/photo_xbevd5.gif" class="card-activity-user avatar-bordered" /> -->
-              <%#= image_tag 'travel_1.jpg', class: 'activity-image' %>
-
-              <div class="inline">
-
-                <h5 class="modal-title" id="exampleModalLongTitle"><%= activity.name %></h5>
-                <td><p class="left-even" id="address-showpage"><%= activity.address %></p><h2 class="card-activity-timing"><%= activity.start_date %> until <%= activity.end_date %></h2></td>
+                  <h5 class="modal-title" id="exampleModalLongTitle"><%= activity.name %></h5>
+                  <td><p class="left-even" id="address-showpage"><%= activity.address %></p><h2 class="card-activity-timing"><%= activity.start_date.strftime('%b %d %Y') %> until <%= activity.end_date.strftime('%b %d %Y') %></h2></td>
+                </div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
               </div>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <div class="insert-image">
-                <%= cl_image_tag activity.photo.key, height: 110, width: 420, crop: :fill %>
+              <div class="modal-body">
+                <div class="insert-image">
+                  <%= cl_image_tag activity.photo.key, height: 110, width: 420, crop: :fill %>
+                </div>
+                  <br>
+                  <p class="left-even"><p><strong>About:</strong> <%= activity.description %></p></p>
               </div>
-                <p class="left-even"><p><strong>About:</strong> <%= activity.description %></p></p>
-            </div>
-            <div class="modal-footer">
-              <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
-              <%= link_to 'Message', profile_path(activity.user), { class: "btn btn-primary" } %>
-              <%= link_to 'Profile', profile_path(activity.user), { class: "btn btn-primary" } %>
+              <div class="modal-footer">
+                <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+                <%= link_to 'Message', profile_path(activity.user), { class: "btn btn-primary" } %>
+                <%= link_to 'Profile', profile_path(activity.user), { class: "btn btn-primary" } %>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <!-- Outside of Modal -->
-      <div class="moving-activity-name">
-        <h2 class="card-activity-name"><td> <%= link_to activity.name, activity %></td></h2>
-      </div>
-      <div class="moving-activity-address">
-        <p class="left-even"><td><%= activity.address %></td></p>
-      </div>
-    <!-- </div> -->
-    <p class="card-activity-timing"><%= activity.start_date %> until <%= activity.end_date %></p>
-      <div class="moving-avatar">
-        <% if activity.user.photo.attached? %>
-          <div >
-            <%= cl_image_tag activity.user.photo.key, height: 50, width: 50, crop: :fill, class: "card-trip-user avatar-bordered" %>
-          </div>
-        <% else %>
-          <img src="https://res.cloudinary.com/detomqnqx/image/upload/v1591364375/photo_xbevd5.gif" class="card-activity-user avatar-bordered" /> -->
-          <%#= image_tag 'travel_1.jpg', class: 'activity-image' %>
-        <% end %>
-        <!-- <img src="https://res.cloudinary.com/detomqnqx/image/upload/v1591364375/photo_xbevd5.gif" class="card-trip-user avatar-bordered" /> -->
-      </div>
-    </div>
-  </div>
+
 </div>
