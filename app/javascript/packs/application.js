@@ -20,32 +20,29 @@ require("channels")
 // Note(lewagon): ABOVE IS RAILS DEFAULT CONFIGURATION
 // WRITE YOUR OWN JS STARTING FROM HERE 👇
 // ----------------------------------------------------
-import "../plugins/flatpickr"
 // External imports
 import "bootstrap";
+import "../plugins/flatpickr"
 
 // Internal imports, e.g:
-// import { initSelect2 } from '../components/init_select2';
+import { initChatroomCable } from '../channels/chatroom_channel';
 //mapbox
+import { initMapbox } from '../plugins/init_mapbox';
 import { initAutocomplete } from '../channels/function';
-
 import { initSelect2 } from '../components/init_select2';
+
+
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   initAutocomplete();
   initSelect2();
+  initChatroomCable();
+  initMapbox();
 });
 
-import { initMapbox } from '../plugins/init_mapbox';
 // CSS
 // import 'mapbox-gl/dist/mapbox-gl.css';
 
-document.addEventListener('turbolinks:load', () => {
-  // Call your functions here, e.g:
-  initAutocomplete();
-  // initSelect2();
-  initMapbox();
-});
 
 
 
