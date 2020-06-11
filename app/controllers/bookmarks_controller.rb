@@ -5,7 +5,7 @@ class BookmarksController < ApplicationController
     @bookmark.activity = @activity
     @bookmark.user = current_user
     if @bookmark.save
-      redirect_to activity_path(@activity)
+      redirect_to activities_path
     else
       render 'activities/show'
     end
@@ -14,6 +14,6 @@ class BookmarksController < ApplicationController
   def destroy
     @bookmark = Bookmark.find(params[:id])
     @bookmark.destroy
-    redirect_to activity_path(@bookmark.activity)
+    redirect_to activities_path
   end
 end

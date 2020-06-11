@@ -32,15 +32,15 @@
   align-items: flex-end;
   position: relative;
   height: 180px;
-    width: 210px;
+  width: 210px;
 }
 
 .card-trip-infos .card-trip-user {
   position: absolute;
-    right: -30px;
-    top: -18px;
-    width: 50px;
-    filter: brightness(1.1);
+  right: -30px;
+  top: -18px;
+  width: 50px;
+  filter: brightness(1.1);
 }
 
 .button-margin {
@@ -49,6 +49,23 @@
   left:190px;
   top:30px;
 }
+
+.position-bookmark {
+    left: 20px;
+    position: absolute;
+    z-index: 2;
+    top: 20px;
+    color: #b73428;
+}
+
+.position-bookmark-unselected {
+   left: 20px;
+    position: absolute;
+    z-index: 2;
+    top: 20px;
+    color: #b73428;
+}
+
 // .container-search {
 //   margin-top: 80px;
 //   margin-bottom: 30px;

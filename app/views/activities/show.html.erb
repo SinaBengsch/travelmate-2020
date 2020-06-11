@@ -8,13 +8,16 @@
           <div>
             <% if @new_bookmark %>
             <%= simple_form_for([@activity, @new_bookmark], remote: true) do |f|%>
-            <%= f.button :button do %><i class="far fa-bookmark"></i><% end %>
+            <%= f.button :button do %><i class="far fa-bookmark fa-2x bookmark-color position-bookmark-unselected"></i><% end %>
             <% end %>
             <% elsif @bookmark %>
-            <%= link_to '<i class="fas fa-bookmark"></i>'.html_safe, bookmark_path(@bookmark), method: :delete, data: {confirm: "Are your sure you want to remove this bookmark?"} %>
+            <%= link_to '<i class="fas fa-bookmark fa-2x bookmark-color position-bookmark"></i>'.html_safe, bookmark_path(@bookmark), method: :delete, data: {confirm: "Are your sure you want to remove this bookmark?"} %>
             <% end %>
             <h2 id="name-showpage"><td> <%= link_to @activity.name, @activity %></td></h2>
-            <td><p class="left-even" id="address-showpage"><%= @activity.address %></p><h2 class="card-activity-timing"><%= @activity.start_date %> until <%= @activity.end_date %></h2></td>
+            <td><p class="left-even fas fa-map-marker-alt" id="address-showpage"> <%= @activity.address %></p>
+              <br>
+              <h2 class="card-activity-timing fas fa-calendar-alt"> <%= @activity.start_date.strftime('%b %d %Y') %> – <%= @activity.end_date.strftime('%b %d %Y') %></h2></td>
+            <br>
             <br>
             <p class="left-even"><p> <%= @activity.description %></p></p>
             <br>
