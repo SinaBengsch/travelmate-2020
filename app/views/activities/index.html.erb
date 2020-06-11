@@ -15,7 +15,7 @@
           <%= f.input :end_date, placeholder: "End Date", as: :string, input_html: {id: "range_end", autocomplete: "off" }, label: false, class: "form-control" %>
         </div>
         <div class="col">
-          <%= f.input :category, collection: @categories, placeholder: "Categories", label: false %>
+          <%= f.input :category, collection: @categories, placeholder: "Categories", label: false, prompt: "Category" %>
         </div>
         <div class="col-w-5">
           <%= f.submit "Search", class: "btn btn-primary" %>
@@ -27,12 +27,12 @@
 </div>
 
 <% if @new_bookmark %>
-    <%= simple_form_for([@activity, @new_bookmark], remote: true) do |f|%>
-    <%= f.button :button do %><i class="far fa-bookmark"></i><% end %>
-    <% end %>
-  <% elsif @bookmark %>
-    <%= link_to '<i class="fas fa-bookmark"></i>'.html_safe, bookmark_path(@bookmark), method: :delete, data: {confirm: "Are your sure you want to remove this bookmark?"} %>
-  <% end %>
+<%= simple_form_for([@activity, @new_bookmark], remote: true) do |f|%>
+<%= f.button :button do %><i class="far fa-bookmark"></i><% end %>
+<% end %>
+<% elsif @bookmark %>
+<%= link_to '<i class="fas fa-bookmark"></i>'.html_safe, bookmark_path(@bookmark), method: :delete, data: {confirm: "Are your sure you want to remove this bookmark?"} %>
+<% end %>
 
 <!-- This are the cards -->
 <br>
@@ -42,20 +42,20 @@
       <div class="cards">
         <% @activities.each do |activity| %>
 
-            <%= render 'shared/card', activity: activity%>
+        <%= render 'shared/card', activity: activity%>
         <% end %>
       </div>
       <!-- </div> -->
     </div>
-      <!-- This is the map -->
+    <!-- This is the map -->
     <div class="col-12 col-md-4" >
       <!-- <div class="container flex-container d-flex mt-5 mb-5"> -->
 
         <div id="map"
-             style="width: 400px; height: 500px;"
-             data-markers="<%= @markers.to_json %>"
-             data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-        </div>
+        style="width: 400px; height: 500px;"
+        data-markers="<%= @markers.to_json %>"
+        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
       <!-- </div> -->
     </div>
   </div>
