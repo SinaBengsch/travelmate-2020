@@ -16,4 +16,3 @@ places({
   });
   }
 };
-export { initAutocomplete };
