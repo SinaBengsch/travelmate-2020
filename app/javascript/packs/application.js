@@ -47,7 +47,11 @@ document.addEventListener('turbolinks:load', () => {
   initMapbox();
 });
 
-
+$(document).ready(function(){
+  $(".category-choice").click(function(){
+    $(this).toggleClass("active");
+  });
+});
 
 // require("bootstrap-select")
 // require("bootstrap/alert")
