@@ -1,5 +1,5 @@
 <!-- This is the banner part -->
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/hawaii);">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0)), url(https://images.unsplash.com/photo-1448518184296-a22facb4446f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80);">
   <div class="container d-flex justify-content-around">
     <div>
       <h1><%= @location %></h1>
@@ -25,7 +25,6 @@
     </div>
   </div>
 </div>
-
 
 <% if @new_bookmark %>
     <%= simple_form_for([@activity, @new_bookmark], remote: true) do |f|%>
