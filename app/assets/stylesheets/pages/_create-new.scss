@@ -7,3 +7,11 @@
 .container .profile-container {
   box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2%);
 }
+
+.bg-image {
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}

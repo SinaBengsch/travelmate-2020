@@ -1,6 +1,10 @@
 .profile-container {
-    background-color: white;
-    color: black;
-    width: 50%;
-    border-radius: 8px;
+  background-color: white;
+  color: black;
+  width: 40%;
+  // border-radius: 8px;
+  border-top-right-radius: 80px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 80px;
+  border-bottom-right-radius: 20px;
 }
