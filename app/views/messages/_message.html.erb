@@ -1,11 +1,32 @@
 
-<div class="message-container" id="message-<%= message.id %>">
+
+
+    <div class="message-container" id="message-<%= message.id %>">
+     <% if message.user === current_user %>
+     <div style="text-align:right;">
       <i class="author">
 
-        <span><%= message.user.first_name %></span>
+        <span><strong><%= message.user.first_name %></strong></span>
 
         <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
       </i>
-       <div class="message-content"><p><%= message.content %></p>
+
+       <div class="message-content" style="background-color: #4ff5c7;"><p style="text-align:right;"><%= message.content %></p></div>
        </div>
+
+
+      <% else %>
+      <div style="text-align:left;">
+      <i class="author">
+
+        <span><strong><%= message.user.first_name %></strong></span>
+
+        <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
+      </i>
+
+       <div class="message-content"><p><%= message.content %></p></div>
+       </div>
+
+      <% end %>
+
     </div>
