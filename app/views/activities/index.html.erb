@@ -26,13 +26,6 @@
   </div>
 </div>
 
-<% if @new_bookmark %>
-<%= simple_form_for([@activity, @new_bookmark], remote: true) do |f|%>
-<%= f.button :button do %><i class="far fa-bookmark"></i><% end %>
-<% end %>
-<% elsif @bookmark %>
-<%= link_to '<i class="fas fa-bookmark"></i>'.html_safe, bookmark_path(@bookmark), method: :delete, data: {confirm: "Are your sure you want to remove this bookmark?"} %>
-<% end %>
 
 <!-- This are the cards -->
 <br>
