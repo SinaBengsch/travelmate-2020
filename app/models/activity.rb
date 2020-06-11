@@ -12,4 +12,6 @@ class Activity < ApplicationRecord
   validates :address, presence: true
   validates :start_date, presence: true
   validates :end_date, presence: true
+
+  has_one :chatroom
 end

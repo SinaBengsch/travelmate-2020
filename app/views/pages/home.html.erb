@@ -37,17 +37,14 @@
 
   <div class="container d-flex suggestion-container">
     <div class="suggestion">
-      <h2>Suggestions for you:</h2>
+      <h2>Suggestions for you</h2>
        </div>
          <div class="refresh">
             <%= link_to root_path do %>
-            <p><i class="fas fa-sync-alt"></i></i></p>
+            <p><i class="fas fa-random"></i></i></p>
             <% end %>
          </div>
        </div>
-
-
-
 
 <!-- This are the cards -->
 <br>
@@ -70,12 +67,19 @@
             </div>
             <div class="moving-activity-address">
               <p class="left-even"><td><%= activity.address %></td></p>
+              <p class="card-activity-timing"><%= activity.start_date %> until <%= activity.end_date %></p>
             </div>
           </div>
 
-            <p class="card-activity-timing"><%= activity.start_date %> until <%= activity.end_date %></p>
+
             <div class="moving-avatar">
-              <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+              <% if activity.user.photo.attached? %>
+                <div>
+                <%= cl_image_tag activity.user.photo.key, height: 50, width: 50, crop: :fill, class: "card-trip-user avatar-bordered" %>
+                </div>
+              <% else %>
+                <img src="https://res.cloudinary.com/detomqnqx/image/upload/v1591364375/photo_xbevd5.gif" class="card-activity-user avatar-bordered" />
+              <% end %>
             </div>
         </div>
       </div>
