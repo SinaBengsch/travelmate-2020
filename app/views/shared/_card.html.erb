@@ -64,7 +64,13 @@
               </div>
               <div class="modal-footer">
                 <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
-                <%= link_to 'Message', profile_path(activity.user), { class: "btn btn-primary" } %>
+                <% if activity.chatroom %>
+                <%= link_to "Chat", chatroom_path(activity.chatroom), { class: "btn btn-primary" } %>
+                <% else %>
+                <%= simple_form_for [activity, chatroom = Chatroom.new] do |f| %>
+                <%= f.button :submit, "Chat" %>
+                <% end %>
+                <% end %>
                 <%= link_to 'Profile', profile_path(activity.user), { class: "btn btn-primary" } %>
               </div>
             </div>

@@ -112,6 +112,9 @@ file8 = URI.open('https://res.cloudinary.com/detomqnqx/image/upload/v1591294674/
 file9 = URI.open('https://res.cloudinary.com/detomqnqx/image/upload/v1591294677/bali-surfing_gs1ndr.jpg')
 file10 = URI.open('https://res.cloudinary.com/detomqnqx/image/upload/v1591294675/bali-beach_d1vkyv.jpg')
 file11 = URI.open('https://res.cloudinary.com/detomqnqx/image/upload/v1591294683/bali.surfing-2_ndztqx.jpg')
+file12 = URI.open('https://res.cloudinary.com/detomqnqx/image/upload/v1591879560/daniele-riggi-OTTfvhpbeTU-unsplash_u6zecy.jpg')
+file13 = URI.open('https://res.cloudinary.com/detomqnqx/image/upload/v1591879798/joe-desousa-vxk-ghi-WZU-unsplash_dpe9jw.jpg')
+
 
 # file = URI.open('https://res.cloudinary.com/detomqnqx/image/upload/v1591267370/travel_2_gaoll5.jpg')
 # file2 = URI.open('https://res.cloudinary.com/detomqnqx/image/upload/v1591267369/travel_1_bvemcd.jpg')
@@ -201,7 +204,7 @@ activity5 = Activity.create!(
   user: user3
   )
 activity5.photo.attach(io: file5, filename: 'photo')
-activity5.categories << sightseeing
+activity5.categories << arts
 
 activity6 = Activity.create!(
   name: "Snorkeling Blue Lagoon",
@@ -268,6 +271,28 @@ activity11 = Activity.create!(
   )
 activity11.photo.attach(io: file11, filename: 'photo')
 activity11.categories << exercise
+
+activity12 = Activity.create!(
+  name: "Moulin Rouge",
+  description: "Let's go out and enjoy some drinks and music in Moulin Rouge.",
+  address: "82 Boulevard de Clichy, 75018 Paris, France",
+  start_date: "Tue, 16 Jun 2020",
+  end_date: "Tue, 16 Jun 2020",
+  user: user4
+  )
+activity12.photo.attach(io: file12, filename: 'photo')
+activity12.categories << nightlife
+
+activity13 = Activity.create!(
+  name: "Boat tour Seine",
+  description: "Let's have a boat trip on the Seine.",
+  address: "5 Avenue Anatole France, 75007 Paris, France",
+  start_date: "Tue, 18 Jun 2020",
+  end_date: "Tue, 18 Jun 2020",
+  user: user5
+  )
+activity13.photo.attach(io: file13, filename: 'photo')
+activity13.categories << adventure
 
 puts 'Data created'
 puts "You now have #{User.count} users and #{Activity.count} activities and #{Category.count} categories."
