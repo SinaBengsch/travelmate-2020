@@ -18,6 +18,7 @@ class ActivitiesController < ApplicationController
       end
 
       if params[:search][:start_date].present?
+        params[:search][:start_date].gsub!(/ to.*/, '')
         @activities = @activities.where("start_date >= ?", params[:search][:start_date])
       end
 
