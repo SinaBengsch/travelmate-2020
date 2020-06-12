@@ -6,7 +6,7 @@ require "open-uri"
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 
-
+Message.destroy all
 Activity.destroy_all # if Rails.env.development?
 ActivityCategory.destroy_all
 Category.destroy_all # if Rails.env.development?
@@ -114,7 +114,10 @@ file10 = URI.open('https://res.cloudinary.com/detomqnqx/image/upload/v1591294675
 file11 = URI.open('https://res.cloudinary.com/detomqnqx/image/upload/v1591294683/bali.surfing-2_ndztqx.jpg')
 file12 = URI.open('https://res.cloudinary.com/detomqnqx/image/upload/v1591879560/daniele-riggi-OTTfvhpbeTU-unsplash_u6zecy.jpg')
 file13 = URI.open('https://res.cloudinary.com/detomqnqx/image/upload/v1591879798/joe-desousa-vxk-ghi-WZU-unsplash_dpe9jw.jpg')
-
+file14 = URI.open('https://res.cloudinary.com/detomqnqx/image/upload/v1591956154/liana-mikah-wAFNWfZM6us-unsplash_i6fc5i.jpg')
+file15 = URI.open('https://res.cloudinary.com/detomqnqx/image/upload/v1591956096/elle-hughes-rYEUdOG2ves-unsplash_jvm9kc.jpg')
+file16 = URI.open('https://res.cloudinary.com/detomqnqx/image/upload/v1591956031/sergio-arze-eH9_kZ92LWQ-unsplash_1_f0jcc5.jpg')
+file17 = URI.open('https://res.cloudinary.com/detomqnqx/image/upload/v1591956136/krists-luhaers-AtPWnYNDJnM-unsplash_devmcb.jpg')
 
 # file = URI.open('https://res.cloudinary.com/detomqnqx/image/upload/v1591267370/travel_2_gaoll5.jpg')
 # file2 = URI.open('https://res.cloudinary.com/detomqnqx/image/upload/v1591267369/travel_1_bvemcd.jpg')
@@ -185,7 +188,7 @@ activity3.photo.attach(io: file3, filename: 'photo')
 activity3.categories << adventure
 
 activity4 = Activity.create!(
-  name: "Eiffel Tower in Paris",
+  name: "Eiffel Tower",
   description: "Next month I am back in Paris and I would like to visit the Eiffel Tower again to take some more pictures. If you enjoy photography as much as I do or just want to enjoy the great view get in touch. I am not super fixed on the day.",
   address: "5 Avenue Anatole France, 75007 Paris, France",
   start_date: "Thu, 01 Oct 2020",
@@ -196,11 +199,11 @@ activity4.photo.attach(io: file4, filename: 'photo')
 activity4.categories << sightseeing
 
 activity5 = Activity.create!(
-  name: "Visit the Louvre in Paris",
+  name: "Visit the Louvre",
   description: "Next month I am back in Paris and I would like to visit the Louvre again to see the Mona Lisa. If you want to join get in touch. I am not super fixed on the day.",
   address: "Rue de Rivoli, 75001 Paris, France",
-  start_date: "Sat, 03 Oct 2020",
-  end_date: "Sun, 04 Oct 2020",
+  start_date: "Sat, 27 Jun 2020",
+  end_date: "Sun, 28 Jun 2020",
   user: user3
   )
 activity5.photo.attach(io: file5, filename: 'photo')
@@ -281,18 +284,62 @@ activity12 = Activity.create!(
   user: user4
   )
 activity12.photo.attach(io: file12, filename: 'photo')
-activity12.categories << nightlife
+activity12.categories << arts
 
 activity13 = Activity.create!(
-  name: "Boat tour Seine",
-  description: "Let's have a boat trip on the Seine.",
-  address: "5 Avenue Anatole France, 75007 Paris, France",
-  start_date: "Tue, 18 Jun 2020",
-  end_date: "Tue, 18 Jun 2020",
+  name: "Boat Tour Seine",
+  description: "I've always dreamed of being French, but my birth parents ultimately ruined that, didn't they! Help me achieve my annoying goal and join me on this raaaaad boat.",
+  address: "Quai d'Orsay, 75000 Paris, France",
+  start_date: "Thu, 25 Jun 2020",
+  end_date: "Tue, 30 Jun 2020",
   user: user5
   )
 activity13.photo.attach(io: file13, filename: 'photo')
-activity13.categories << adventure
+activity13.categories << sightseeing
+
+activity14 = Activity.create!(
+  name: "Picnic in Brassai",
+  description: "I love food. I love the outdoors. And, as a French entomologist, I love French bugs - especially when they're crawling all over my sammy. You know what that means. PICNIC TIME!",
+  address: "Square Brassaï, 75013 Paris, France",
+  start_date: "Wed, 01 Jul 2020",
+  end_date: "Thu, 02 Jul 2020",
+  user: user6
+  )
+activity14.photo.attach(io: file14, filename: 'photo')
+activity14.categories << food
+
+activity15 = Activity.create!(
+  name: "Mama Needs Wine",
+  description: "Christ, my kids are loud. How do other people do this? I can't run away - not yet. But soon. Until then, this Mom of 5 needs wine and she needs a lot. Let's brown-paper-bag it in the street like the old days.",
+  address: "26 Avenue de Wagram, 75008 Paris, France",
+  start_date: "Mon, 22 Jun 2020",
+  end_date: "Tue, 30 Jun 2020",
+  user: user3
+  )
+activity15.photo.attach(io: file15, filename: 'photo')
+activity15.categories << exercise
+
+activity16 = Activity.create!(
+  name: "One. Hundred. Croissants.",
+  description: "Hello, I am American. Drove my pickup all the way from Tennessee after having a big fight with my wife. Never had a croissant, but figured now was the time, yes sir. Let's start with 100 and go from there.",
+  address: "86 Rue du Rocher, 75008 Paris, France",
+  start_date: "Thu, 09 Jul 2020",
+  end_date: "Fri, 10 Jul 2020",
+  user: user4
+  )
+activity16.photo.attach(io: file16, filename: 'photo')
+activity16.categories << food
+
+activity17 = Activity.create!(
+  name: "Depardieu v. Diesel",
+  description: "Yooooo, you guys love Vinny 'D-Man' Diesel? Fast n Furious, homie?! Woof! You know I do! But check-it, my dumb school is making me watch some French movies. Laaaame. Come keep me company ya'll!",
+  address: "1 Rue Balzac, 75008 Paris, France",
+  start_date: "Sat, 29 Aug 2020",
+  end_date: "Sun, 30 Aug 2020",
+  user: user2
+  )
+activity17.photo.attach(io: file17, filename: 'photo')
+activity17.categories << music
 
 puts 'Data created'
 puts "You now have #{User.count} users and #{Activity.count} activities and #{Category.count} categories."
