@@ -203,12 +203,12 @@ activity5 = Activity.create!(
   name: "Visit the Louvre",
   description: "Next month I am back in Paris and I would like to visit the Louvre again to see the Mona Lisa. If you want to join get in touch. I am not super fixed on the day.",
   address: "Rue de Rivoli, 75001 Paris, France",
-  start_date: "Sat, 27 Jun 2020",
-  end_date: "Sun, 28 Jun 2020",
+  start_date: "Sat, 29 Aug 2020",
+  end_date: "Sun, 30 Aug 2020",
   user: user3
   )
 activity5.photo.attach(io: file5, filename: 'photo')
-activity5.categories << arts
+activity5.categories << sightseeing
 
 activity6 = Activity.create!(
   name: "Snorkeling Blue Lagoon",
@@ -280,8 +280,8 @@ activity12 = Activity.create!(
   name: "Moulin Rouge",
   description: "Let's go out and enjoy some drinks and music in Moulin Rouge.",
   address: "82 Boulevard de Clichy, 75018 Paris, France",
-  start_date: "Tue, 16 Jun 2020",
-  end_date: "Tue, 16 Jun 2020",
+  start_date: "Tue, 21 Jul 2020",
+  end_date: "Tue, 21 Jul 2020",
   user: user4
   )
 activity12.photo.attach(io: file12, filename: 'photo')
@@ -302,8 +302,8 @@ activity14 = Activity.create!(
   name: "Picnic in Brassai",
   description: "I love food. I love the outdoors. And, as a French entomologist, I love French bugs - especially when they're crawling all over my sammy. You know what that means. PICNIC TIME!",
   address: "Square Brassaï, 75013 Paris, France",
-  start_date: "Wed, 01 Jul 2020",
-  end_date: "Thu, 02 Jul 2020",
+  start_date: "Mon, 29 Jun 2020",
+  end_date: "Mon, 29 Jun 2020",
   user: user6
   )
 activity14.photo.attach(io: file14, filename: 'photo')
@@ -318,14 +318,14 @@ activity15 = Activity.create!(
   user: user3
   )
 activity15.photo.attach(io: file15, filename: 'photo')
-activity15.categories << exercise
+activity15.categories << food
 
 activity16 = Activity.create!(
-  name: "One. Hundred. Croissants.",
+  name: "100 Croissants",
   description: "Hello, I am American. Drove my pickup all the way from Tennessee after having a big fight with my wife. Never had a croissant, but figured now was the time, yes sir. Let's start with 100 and go from there.",
   address: "86 Rue du Rocher, 75008 Paris, France",
-  start_date: "Thu, 09 Jul 2020",
-  end_date: "Fri, 10 Jul 2020",
+  start_date: "Tue, 23 Jun 2020",
+  end_date: "Wed, 24 Jun 2020",
   user: user4
   )
 activity16.photo.attach(io: file16, filename: 'photo')
