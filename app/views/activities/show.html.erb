@@ -11,7 +11,7 @@
             <%= f.button :button do %><i class="far fa-bookmark fa-2x bookmark-color position-bookmark-unselected"></i><% end %>
             <% end %>
             <% elsif @bookmark %>
-            <%= link_to '<i class="fas fa-bookmark fa-2x bookmark-color position-bookmark"></i>'.html_safe, bookmark_path(@bookmark), method: :delete, data: {confirm: "Are your sure you want to remove this bookmark?"} %>
+            <%= link_to '<i class="fas fa-bookmark fa-2x"></i>'.html_safe, bookmark_path(@bookmark), method: :delete, data: {confirm: "Are your sure you want to remove this bookmark?"}, class: "bookmark-color position-bookmark-show" %>
             <% end %>
             <h2 id="name-showpage"><td> <%= link_to @activity.name, @activity %></td></h2>
             <td><p class="left-even fas fa-map-marker-alt" id="address-showpage"> <%= @activity.address %></p>
@@ -24,7 +24,7 @@
             <div class="row">
               <div class="col">
                 <%= link_to activities_path do %>
-                <div class="btn btn-primary"><i class="fa fa-arrow-left"></i> Activities</div>
+                <div class="btn btn-primary activities-button"><i class="fa fa-arrow-left"></i><p>Activities</p></div>
                 <% end %>
               </div>
               <div class="col">

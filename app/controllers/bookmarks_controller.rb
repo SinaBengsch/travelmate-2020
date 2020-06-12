@@ -4,9 +4,10 @@ class BookmarksController < ApplicationController
     @activity = Activity.find(params[:activity_id])
     @bookmark.activity = @activity
     @bookmark.user = current_user
+    raise
     if @bookmark.save
       flash[:notice] = 'Bookmark save'
-      redirect_to activities_path
+      redirect_to activity_path(@activity)
     else
       render 'activities/show'
     end

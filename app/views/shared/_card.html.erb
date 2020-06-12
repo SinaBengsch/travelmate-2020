@@ -51,7 +51,7 @@
                 <%= f.button :button do %><i class="far fa-bookmark fa-2x bookmark-color position-bookmark-unselected"></i><% end %>
                 <% end %>
                 <% else %>
-                <%= link_to '<i class="fas fa-bookmark fa-2x bookmark-color position-bookmark"></i>'.html_safe, bookmark_path(activity.fetch_bookmark(current_user)), method: :delete, data: {confirm: "Are your sure you want to remove this bookmark?"} %>
+                <%= link_to '<i class="fas fa-bookmark fa-2x"></i>'.html_safe, bookmark_path(activity.fetch_bookmark(current_user)), method: :delete, data: {confirm: "Are your sure you want to remove this bookmark?"}, class: " bookmark-color position-bookmark" %>
                 <% end %>
               </div>
               <%= cl_image_tag activity.user.photo.key, height: 60, width: 60, crop: :fill, class: "card-activity-user avatar-bordered" %>

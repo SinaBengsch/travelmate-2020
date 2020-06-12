@@ -51,25 +51,44 @@
 }
 
 .position-bookmark {
-  left: 0px;
+  left: 20px;
   position: absolute;
   z-index: 2;
-  top: 20px;
+  top: 13px;
+  color: #b73428;
+  &:hover {
+    color: #b73428;
+  }
+}
+
+.position-bookmark-show {
+  left: 24px;
+  position: absolute;
+  z-index: 2;
+  top: 19px;
+  color: #b73428;
+}
+
+.new_bookmark {
+  left: 12px;
+  position: absolute;
+  z-index: 2;
+  top: 12px;
   color: #b73428;
 }
 
 .position-bookmark-unselected {
-  left: 0px;
-  position: absolute;
-  z-index: 2;
-  top: 20px;
+  // left: 0px;
+  // position: absolute;
+  // z-index: 2;
+  // top: 20px;
   color: #b73428;
 }
 
 .label {
-  color: black;
-  background-color: #A9A9A9;
-  padding: 8px;
+  color: white;
+  background-color: #a9a9a99c;
+  padding: 2px;
   border-radius: 5px;
   width: 40%;
   text-align: center;
