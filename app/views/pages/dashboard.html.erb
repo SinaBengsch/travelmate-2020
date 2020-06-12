@@ -1,3 +1,4 @@
+<br>
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-9">
@@ -63,8 +64,22 @@
                   <p class="left-even fas fa-map-marker-alt"> <td><%= bookmark.activity.address %></td></p>
                   <p class="card-activity-timing fas fa-calendar-alt"> <%= bookmark.activity.start_date.strftime('%b %d %Y') %> – <%= bookmark.activity.end_date.strftime('%b %d %Y') %></p>
                 </div>
-                <!-- bookmark -->
-                <%= link_to '<i class="fas fa-bookmark"></i>'.html_safe, bookmark_path(bookmark), method: :delete, data: {confirm: "Are your sure you want to remove this bookmark?"} %>
+                  <div class="moving-avatar">
+                <% if bookmark.activity.user.photo.attached? %>
+                <div>
+                  <%= cl_image_tag bookmark.activity.user.photo.key, height: 50, width: 50, crop: :fill, class: "card-trip-user avatar-bordered" %>
+                </div>
+                <% else %>
+                <img src="https://res.cloudinary.com/detomqnqx/image/upload/v1591364375/photo_xbevd5.gif" class="card-activity-user avatar-bordered" />
+                <% end %>
+              </div>
+              <% if bookmark.activity.chatroom %>
+              <%= link_to "Chat", chatroom_path(bookmark.activity.chatroom), { class: "btn btn-primary" } %>
+              <% else %>
+              <%= simple_form_for [bookmark.activity, chatroom = Chatroom.new] do |f| %>
+              <%= f.button :submit, "Chat", { class: "btn btn-primary" } %>
+              <% end %>
+              <% end %>
               </div>
             </div>
           </div>
