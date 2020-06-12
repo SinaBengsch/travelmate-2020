@@ -7,6 +7,7 @@ require "open-uri"
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 
 Message.destroy_all
+Chatroom.destroy_all
 Activity.destroy_all # if Rails.env.development?
 ActivityCategory.destroy_all
 Category.destroy_all # if Rails.env.development?
