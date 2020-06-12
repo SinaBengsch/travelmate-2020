@@ -301,7 +301,7 @@ activity13.categories << sightseeing
 activity14 = Activity.create!(
   name: "Picnic in Brassai",
   description: "I love food. I love the outdoors. And, as a French entomologist, I love French bugs - especially when they're crawling all over my sammy. You know what that means. PICNIC TIME!",
-  address: "Square Brassaï, 75013 Paris, France",
+  address: "46 Rue du Bac, 75007 Paris, France",
   start_date: "Mon, 29 Jun 2020",
   end_date: "Mon, 29 Jun 2020",
   user: user6
