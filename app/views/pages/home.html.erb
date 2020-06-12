@@ -40,14 +40,14 @@
       <h2 id="section2">Suggestions for you</h2>
        </div>
          <div class="refresh">
-            <a href="#section2"><p><i class="fas fa-random"></i></p></a>
+            <a href="#section2"><i class="fas fa-random"></i> refresh activities</a>
          </div>
        </div>
 
 <!-- This are the cards -->
 <br>
 <div class="container flex-container d-flex mb-5">
-  <div class="cards">
+  <div class="cards-home">
     <% @activities.each do |activity| %>
       <div class="container card-trip">
         <% if activity.photo.attached? %>
@@ -57,16 +57,13 @@
         <% end %>
         <div class="card-trip-infos">
           <div>
-            <div class="button-margin">
-              <%= link_to 'show', activity_path(activity), { class: "btn btn-primary" } %>
-            </div>
+
             <div class="moving-activity-name">
               <h2 class="card-activity-name"><td> <%= link_to activity.name, activity %></td></h2>
             </div>
             <div class="moving-activity-address">
-              <p class="left-even"><td><%= activity.address %></td></p>
-              <p class="card-activity-timing"><%= activity.start_date %> until <%= activity.end_date %></p>
-            </div>
+              <p class="left-even fas fa-map-marker-alt"> <td><%= activity.address %></td></p>
+<p class="card-activity-timing fas fa-calendar-alt"> <%= activity.start_date.strftime('%b %d %Y') %> – <%= activity.end_date.strftime('%b %d %Y') %></p>            </div>
           </div>
 
 
