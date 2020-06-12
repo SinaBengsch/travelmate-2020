@@ -1,4 +1,5 @@
-<div class="bg-image" style="background-image: url(https://images.unsplash.com/photo-1582143009609-6eb83b98993b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80);">
+<div class="bg-image-p" style="background-image: url(https://images.unsplash.com/photo-1582143009609-6eb83b98993b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80);">
+  <br><br><br><br>
   <div class="container profile-container">
     <div class="row justify-content-center p-5">
       <div class="flex-grow-1">
@@ -31,13 +32,13 @@
         <div class="card-bottom d-flex justify-content-between">
           <div>
             <%= link_to activities_path do %>
-            <div class="btn btn-primary"><i class="fa fa-arrow-left"></i> Activities</div>
+            <div class="btn btn-primary">Activities</div>
             <% end %>
           </div>
           <div class="text-right">
             <% if current_user == @profile %>
             <%= link_to edit_user_registration_path do %>
-            <div class="btn btn-primary"><i class="fas fa-pencil-alt"></i> Edit</div>
+            <div class="btn btn-primary">Edit</div>
             <% end %>
             <% end %>
           </div>
