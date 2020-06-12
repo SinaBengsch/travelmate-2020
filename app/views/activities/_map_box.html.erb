@@ -1,5 +1,14 @@
 <div >
-  <img src="https://res.cloudinary.com/detomqnqx/image/upload/v1591364375/photo_xbevd5.gif" class="card-activity-user avatar-bordered" />
+  <div>
+    <% if activity.user.photo.attached? %>
+              <div >
+                <%= cl_image_tag activity.user.photo.key, class: "card-trip-user hover-avatar" %>
+              </div>
+              <% else %>
+              <img src="https://res.cloudinary.com/detomqnqx/image/upload/v1591364375/photo_xbevd5.gif" class="card-activity-user avatar-bordered" /> -->
+              <%#= image_tag 'travel_1.jpg', class: 'activity-image' %>
+    <% end %>
+  </div>
     <div class="inline">
       <h5 class="modal-title" id="exampleModalLongTitle"><%= activity.name %></h5>
       <td><p class="left-even" id="address-showpage"><%= activity.address %></p><p ><%= activity.start_date %> until <%= activity.end_date %></p></td>
@@ -15,7 +24,7 @@
 
 <div class="modal-footer">
 <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
-  <%= link_to 'Make an booking', profile_path(activity.user), { class: "btn btn-primary" } %>
+  <%= link_to 'Chat', profile_path(activity.user), { class: "btn btn-primary" } %>
 </div>
 
 
