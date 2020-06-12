@@ -50,11 +50,6 @@ ActiveRecord::Schema.define(version: 2020_06_10_211220) do
     t.index ["user_id"], name: "index_activities_on_user_id"
   end
 
-  create_table "activities_categories", id: false, force: :cascade do |t|
-    t.bigint "activity_id", null: false
-    t.bigint "category_id", null: false
-  end
-
   create_table "activity_categories", force: :cascade do |t|
     t.bigint "activity_id"
     t.bigint "category_id", null: false
