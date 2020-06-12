@@ -6,7 +6,7 @@
       <%= simple_form_for :search, url: activities_path, method: :get do |f| %>
       <div class="form-row w-5 m-5">
         <div class="col">
-          <%= f.input :location, input_html: {value: @location.try(:capitalize), class: "form-control address-input"}, placeholder: "Location", label: false  %>
+          <%= f.input :location, input_html: {value: @location.try(:capitalize), class: "form-control address-input", id: "activity_address"}, placeholder: "Location", label: false  %>
         </div>
         <div class="col">
           <%= f.input :start_date, placeholder: "Start Date", as: :string, input_html: {id: "range_start"}, label: false, class: "form-control" %>
