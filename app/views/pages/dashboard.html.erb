@@ -5,67 +5,72 @@
       <h2>My activities</h2>
       <hr>
       <br>
-      <% current_user.activities.each do |activity|%>
-      <div class="card-dashboard-activity">
-        <div class="d-flex align-items-center">
-          <div>
+      <div class="container flex-container d-flex mb-5">
+        <div class="cards">
+          <% current_user.activities.each do |activity| %>
+          <div class="container card-trip">
             <% if activity.photo.attached? %>
-            <%= cl_image_tag activity.photo.key, height: 200, width: 150, crop: :fill %>
+            <%= cl_image_tag activity.photo.key, height: 300, width: 400, crop: :fill %>
             <% else %>
-            <%= image_tag 'travel_1.jpg', height: 200, width: 150, crop: :fill%>
+            <%= image_tag 'travel_1.jpg', class: 'activity-image' %>
             <% end %>
-          </div>
-          <div class="card-dashboard-description">
-            <div>
-              <h4><%= activity.name %></h4>
-              <p><%= activity.address %></p>
-              <p><%= activity.start_date %> – <%= activity.end_date %></p>
-              <%= link_to 'show', activity_path(activity), { class: "btn btn-primary" } %>
+            <div class="card-trip-infos">
               <div>
-                <% activity.categories.each do |category| %>
-                <%= category.name %>
+
+                <div class="moving-activity-name">
+                  <h2 class="card-activity-name"><td> <%= link_to activity.name, activity %></td></h2>
+                </div>
+                <div class="moving-activity-address">
+                  <p class="left-even fas fa-map-marker-alt"> <td><%= activity.address %></td></p>
+                  <p class="card-activity-timing fas fa-calendar-alt"> <%= activity.start_date.strftime('%b %d %Y') %> – <%= activity.end_date.strftime('%b %d %Y') %></p>
+                </div>
+              </div>
+              <div class="moving-avatar">
+                <% if activity.user.photo.attached? %>
+                <div>
+                  <%= cl_image_tag activity.user.photo.key, height: 50, width: 50, crop: :fill, class: "card-trip-user avatar-bordered" %>
+                </div>
+                <% else %>
+                <img src="https://res.cloudinary.com/detomqnqx/image/upload/v1591364375/photo_xbevd5.gif" class="card-activity-user avatar-bordered" />
                 <% end %>
               </div>
             </div>
           </div>
+          <% end %>
         </div>
       </div>
-
-      <br>
-      <% end %>
       <br>
 
       <h2>Bookmarked activities</h2>
       <hr>
       <br>
-      <% current_user.bookmarks.each do |bookmark|  %>
-      <div class="card-dashboard-activity">
-        <div class="d-flex align-items-center">
-          <div>
+      <div class="container flex-container d-flex mb-5">
+        <div class="cards">
+          <% current_user.bookmarks.each do |bookmark|  %>
+          <div class="container card-trip">
             <% if bookmark.activity.photo.attached? %>
             <%= cl_image_tag bookmark.activity.photo.key, height: 200, width: 150, crop: :fill %>
             <% else %>
             <%= image_tag 'travel_1.jpg', height: 200, width: 150, crop: :fill%>
             <% end %>
-          </div>
-          <div class="card-dashboard-description">
-            <div>
-              <h4><%= bookmark.activity.name %></h4>
-              <p><%= bookmark.activity.address %></p>
-              <p><%= bookmark.activity.start_date %> – <%= bookmark.activity.end_date %></p>
+
+            <div class="card-trip-infos">
               <div>
-                <% bookmark.activity.categories.each do |category| %>
-                <%= category.name %>
-                <% end %>
+                <div class="moving-activity-name">
+                  <h2 class="card-activity-name"><td> <%= link_to bookmark.activity.name, bookmark.activity %></td></h2>
+                </div>
+                <div class="moving-activity-address">
+                  <p class="left-even fas fa-map-marker-alt"> <td><%= bookmark.activity.address %></td></p>
+                  <p class="card-activity-timing fas fa-calendar-alt"> <%= bookmark.activity.start_date.strftime('%b %d %Y') %> – <%= bookmark.activity.end_date.strftime('%b %d %Y') %></p>
+                </div>
+                <!-- bookmark -->
+                <%= link_to '<i class="fas fa-bookmark"></i>'.html_safe, bookmark_path(bookmark), method: :delete, data: {confirm: "Are your sure you want to remove this bookmark?"} %>
               </div>
-              <img src="https://res.cloudinary.com/detomqnqx/image/upload/v1591365485/creepy_dan_v0t1mx.png" class="avatar-bordered" />
-              <!-- bookmark -->
-              <%= link_to '<i class="fas fa-bookmark"></i>'.html_safe, bookmark_path(bookmark), method: :delete, data: {confirm: "Are your sure you want to remove this bookmark?"} %>
             </div>
           </div>
+          <% end %>
         </div>
       </div>
-      <% end %>
 
     </div>
   </div>

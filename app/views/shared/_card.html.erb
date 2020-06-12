@@ -72,10 +72,9 @@
                 <%= cl_image_tag activity.photo.key, height: 110, width: 420, crop: :fill %>
               </div>
               <br>
-              <div class="btn btn-outline-secondary">
-                <%= activity.categories.first.name %>
+              <div class="label">
+                <%= activity.categories.first.name.downcase %>
               </div>
-              <br>
               <br>
               <p class="left-even"><p><strong>About:</strong> <%= activity.description %></p></p>
             </div>
